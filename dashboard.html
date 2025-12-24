@@ -1,0 +1,531 @@
+<script>
+if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "../authentication_page/code.html";
+}
+</script>
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroLink BCI Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1625f3",
+                        "accent-cyan": "#00f0ff",
+                        "accent-purple": "#bf00ff",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101223", // Matching the provided component bg
+                        "card-dark": "#181a34", // Matching the provided card bg
+                        "nav-dark": "#222549", // Matching the provided nav bg
+                        "text-secondary": "#9094cb",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101223; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222549; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b407a; 
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        .digital-twin-image {
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+.digital-twin-card {
+  height: auto !important;
+  min-height: unset !important;
+}
+
+        .chart-grid {
+            background-image: linear-gradient(rgba(144, 148, 203, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(144, 148, 203, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+.motor-diagnostics {
+  margin-top: 0;
+  align-self: flex-start;
+}
+
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Side Navigation -->
+<aside class="w-64 bg-background-dark border-r border-[#222549] flex flex-col justify-between p-4 hidden lg:flex shrink-0 z-20">
+<div class="flex flex-col gap-6">
+<!-- Branding -->
+<div class="flex flex-col px-2">
+<h1 class="text-white text-2xl font-bold leading-normal tracking-wide">NeuroLink<span class="text-primary">.ai</span></h1>
+<p class="text-text-secondary text-xs font-normal leading-normal tracking-wider">BCI CONTROL CENTER v2.4</p>
+</div>
+<!-- Nav Items -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/20 border border-primary/30 text-white group transition-colors" href="#">
+<span class="material-symbols-outlined text-primary group-hover:text-white">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">ecg_heart</span>
+<p class="text-sm font-medium leading-normal">Patient Data</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<p class="text-sm font-medium leading-normal">Device Control</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-sm font-medium leading-normal">Diagnostics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<p class="text-sm font-medium leading-normal">Reports</p>
+</a>
+</nav>
+</div>
+<!-- Bottom Actions -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<div class="px-3 py-3 rounded-xl bg-[#222549] mt-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">JD</div>
+<div class="flex flex-col">
+<p class="text-white text-xs font-bold">Dr. Sarah Connors</p>
+<p class="text-text-secondary text-[10px]">Lead Neurologist</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#222549] bg-background-dark/80 backdrop-blur-md px-6 py-4 sticky top-0 z-10">
+<div class="flex items-center gap-4 text-white">
+<div class="lg:hidden">
+<span class="material-symbols-outlined cursor-pointer">menu</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+<h2 class="text-white text-base md:text-lg font-bold leading-tight tracking-tight">Patient: John Doe <span class="text-text-secondary font-normal mx-2">|</span> Status: Connected</h2>
+</div>
+</div>
+<div class="flex items-center gap-4 md:gap-6">
+<!-- Segmented Role Switcher (Hidden on mobile for space) -->
+<div class="hidden md:flex h-9 items-center justify-center rounded-lg bg-[#222549] p-1">
+<label class="cursor-pointer px-3 py-1 rounded-md text-text-secondary text-xs font-medium hover:text-white transition-colors">
+<span>Admin</span>
+<input class="hidden" name="role" type="radio" value="Admin"/>
+</label>
+<label class="cursor-pointer px-3 py-1 rounded-md bg-[#101223] shadow-sm text-white text-xs font-medium">
+<span>Doctor</span>
+<input checked="" class="hidden" name="role" type="radio" value="Doctor"/>
+</label>
+<label class="cursor-pointer px-3 py-1 rounded-md text-text-secondary text-xs font-medium hover:text-white transition-colors">
+<span>Patient</span>
+<input class="hidden" name="role" type="radio" value="Patient"/>
+</label>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg w-9 h-9 hover:bg-[#222549] text-text-secondary hover:text-white transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-[#101223]"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg w-9 h-9 hover:bg-[#222549] text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-9 w-9 border border-[#222549]" data-alt="Profile picture of a doctor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuS4zsq_nEwz7TikfgsEMF9Sx_Z-grFTE_0qHm997Gj1FXP6qa0t-b76ZRM4Dj7BOQfTJMSuCfKWOFNLjgo3yMJ7Ktk7YpErbXsmUPwjsFeO8Q5Ez-4fcp078plpblb1sGHZvH7-rx79fygPHNUk36s0hvmBL-wI4W6LTG239zfNN9N_cFZH1sN8kxwrsCX3HMqaePAPNYt55tqqyMBdpXDFWU240poQWqiSCg2FpxmEAlmZr5hLPoYxL0fsVCEol8abamMF2BBhk-");'></div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 h-full">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-6">
+<!-- Headlines & Top Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-white text-3xl font-bold leading-tight">Live Telemetry</h2>
+<p class="text-text-secondary text-sm mt-1">Real-time neural monitoring and prosthetic feedback loop.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-[#222549] rounded-lg text-sm font-medium text-white border border-transparent hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                                Replay Session
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary rounded-lg text-sm font-medium text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                                Calibrate Sensors
+                            </button>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-12 gap-6 h-full">
+<!-- 3D Prosthetic Twin (Left Col) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col">
+<div class="bg-card-dark rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.2)] overflow-hidden border border-[#222549] h- flex flex-col">
+<div class="p-4 border-b border-[#222549] flex justify-between items-center">
+<h3 class="text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">view_in_ar</span>
+                                        Digital Twin
+                                    </h3>
+<span class="px-2 py-0.5 rounded bg-green-500/10 text-green-400 text-xs font-mono uppercase border border-green-500/20">Synced</span>
+</div>
+<div class="relative flex-1 min-h-[300px] bg-gradient-to-b from-[#101223] to-[#181a34]">
+<!-- Interactive Overlay Controls -->
+<div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
+<button class="w-8 h-8 rounded bg-[#222549]/80 backdrop-blur text-white flex items-center justify-center hover:bg-primary"><span class="material-symbols-outlined text-sm">rotate_right</span></button>
+<button class="w-8 h-8 rounded bg-[#222549]/80 backdrop-blur text-white flex items-center justify-center hover:bg-primary"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+<button class="w-8 h-8 rounded bg-[#222549]/80 backdrop-blur text-white flex items-center justify-center hover:bg-primary"><span class="material-symbols-outlined text-sm">layers</span></button>
+</div>
+<!-- 3D Model Placeholder -->
+<div
+  class="mx-auto bg-center bg-contain bg-no-repeat opacity-90 transition-opacity hover:opacity-100 cursor-move"
+  data-alt="Futuristic 3D wireframe render of a robotic arm with glowing joints"
+  style='
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQQaV0DxvUVaSaLr19chj4jpN-Tla7Doho-bIZutUAcCHGS1nFE44SmrojjYKhRYYU-EOznmDnnVsNnC_yqk85SBTl3gsuXHDDpahslWA-WHRlPDs_qulaQA4wKBAdNeOTiAg9Fr_4WSaOGbo6gLEEh5raKyPl6rOFrDazwgWqHz7CG4Gl_i5C80Ru_P5ngMC2g8y5v560cQAZuyDyIvzEFjCsmjsUp6V3lbfWg7DPll331R9jCbDx-bpaq4JB_XsxhE_peKjvMTKn");
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 5;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  '>
+</div>
+<!-- Overlay Info -->
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="bg-[#101223]/80 backdrop-blur px-3 py-2 rounded-lg border border-white/5">
+<p class="text-text-secondary text-xs uppercase mb-1">Current Action</p>
+<p class="text-white text-sm font-bold">Cylindrical Grasp</p>
+</div>
+<div class="bg-[#101223]/80 backdrop-blur px-3 py-2 rounded-lg border border-white/5 text-right">
+<p class="text-text-secondary text-xs uppercase mb-1">Rotation</p>
+<p class="text-accent-cyan text-sm font-mono">X: 45° Y: 12°</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- EEG & Analytics (Right Col) -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-6 min-h-0">
+
+<!-- EEG Waveform -->
+<div class="bg-card-dark rounded-xl shadow-lg border border-[#222549] p-5 relative overflow-hidden group flex-1 min-h-0">
+
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<h3 class="text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-purple">show_chart</span>
+                                            EEG Stream
+                                        </h3>
+<canvas id="eegCanvas"
+        class="w-full rounded-xl bg-[#0f1023]"
+        height="260"></canvas>
+
+<div class="grid grid-cols-4 gap-4 mt-4">
+    <div class="text-center">
+        <p class="text-xs text-blue-400">ALPHA</p>
+        <p id="alphaVal" class="text-lg font-bold">0.0 uV</p>
+    </div>
+    <div class="text-center">
+        <p class="text-xs text-indigo-400">BETA</p>
+        <p id="betaVal" class="text-lg font-bold">0.0 uV</p>
+    </div>
+    <div class="text-center">
+        <p class="text-xs text-purple-400">THETA</p>
+        <p id="thetaVal" class="text-lg font-bold">0.0 uV</p>
+    </div>
+    <div class="text-center">
+        <p class="text-xs text-pink-400">DELTA</p>
+        <p id="deltaVal" class="text-lg font-bold">0.0 uV</p>
+    </div>
+</div>
+
+
+<p class="text-text-secondary text-xs mt-1 font-mono">Channel 4 (Motor Cortex) - 256Hz</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-cyan animate-pulse"></span>
+<span class="text-accent-cyan text-xs font-mono">LIVE</span>
+</div>
+</div>
+<!-- Fake Chart Container -->
+<div class="relative border-white/5 bg-[#101223]/50">
+<!-- Waveform SVG -->
+<defs>
+<lineargradient id="gradientStroke" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#1625f3;stop-opacity:0"></stop>
+<stop offset="20%" style="stop-color:#00f0ff;stop-opacity:1"></stop>
+<stop offset="80%" style="stop-color:#bf00ff;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#bf00ff;stop-opacity:0"></stop>
+</lineargradient>
+<filter id="glow">
+<fegaussianblur result="coloredBlur" stddeviation="2.5"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Simulated noisy data line -->
+
+<!-- Second subtle line for another channel -->
+<path d="M0,110 Q50,120 100,110 T200,100 T300,90 T400,120 T500,110 T600,100 T700,130 T800,100 T900,115 T1000,110" fill="none" stroke="#222549" stroke-dasharray="5,5" stroke-width="2"></path>
+</svg>
+<!-- Small Widget Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- AI Confidence -->
+<div class="bg-card-dark rounded-xl border border-[#222549] p-4 flex flex-col items-center justify-center relative">
+<h4 class="text-text-secondary text-xs uppercase font-bold absolute top-4 left-4">AI Confidence</h4>
+<div class="relative w-24 h-24 mt-4">
+<!-- Donut Chart -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#222549" stroke-width="4"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#1625f3" stroke-dasharray="98, 100" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-white text-xl font-bold">98%</span>
+</div>
+</div>
+<p class="text-white text-xs mt-2 text-center">Grasp Intent Predicted</p>
+</div>
+<!-- Grip Force -->
+<div class="bg-card-dark rounded-xl border border-[#222549] p-4 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h4 class="text-text-secondary text-xs uppercase font-bold">Grip Force</h4>
+<span class="material-symbols-outlined text-text-secondary text-sm">hand_bones</span>
+</div>
+<div class="flex items-end gap-2 my-2">
+<span class="text-3xl font-bold text-white neon-text">42</span>
+<span class="text-text-secondary text-sm mb-1">Newtons</span>
+</div>
+<!-- Sparkline -->
+<div class="h-8 w-full flex items-end gap-1">
+<div class="w-1 bg-primary/30 h-[40%] rounded-t-sm"></div>
+<div class="w-1 bg-primary/40 h-[60%] rounded-t-sm"></div>
+<div class="w-1 bg-primary/60 h-[50%] rounded-t-sm"></div>
+<div class="w-1 bg-primary/50 h-[70%] rounded-t-sm"></div>
+<div class="w-1 bg-primary h-[80%] rounded-t-sm"></div>
+<div class="w-1 bg-primary/50 h-[60%] rounded-t-sm"></div>
+<div class="w-1 bg-primary/30 h-[40%] rounded-t-sm"></div>
+</div>
+</div>
+<!-- System Status -->
+<div class="bg-card-dark rounded-xl border border-[#222549] p-4 flex flex-col justify-between">
+<h4 class="text-text-secondary text-xs uppercase font-bold">System Health</h4>
+<div class="flex flex-col gap-3 mt-2">
+<div class="flex items-center gap-3">
+<div class="p-1.5 rounded bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-sm block">battery_charging_full</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-white text-xs">Battery</span>
+<span class="text-white text-xs">84%</span>
+</div>
+<div class="h-1.5 w-full bg-[#101223] rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[84%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-1.5 rounded bg-orange-500/20 text-orange-400">
+<span class="material-symbols-outlined text-sm block">thermostat</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-white text-xs">Temp</span>
+<span class="text-white text-xs">34°C</span>
+</div>
+<div class="h-1.5 w-full bg-[#101223] rounded-full overflow-hidden">
+<div class="h-full bg-orange-400 w-[40%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Diagnostics Table -->
+<div class="w-full bg-card-dark border border-[#222549] rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-[#222549] flex justify-between items-center">
+<h3 class="text-white font-bold text-lg">Motor Diagnostics</h3>
+<button class="text-primary text-sm font-medium hover:underline">View Full Log</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#101223]/50 text-text-secondary text-xs uppercase tracking-wider">
+<th class="px-6 py-3 font-medium">Motor ID</th>
+<th class="px-6 py-3 font-medium">Function</th>
+<th class="px-6 py-3 font-medium">Status</th>
+<th class="px-6 py-3 font-medium">Load</th>
+<th class="px-6 py-3 font-medium">Efficiency</th>
+<th class="px-6 py-3 font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="text-sm text-gray-300 divide-y divide-[#222549]">
+<tr class="hover:bg-[#222549]/30 transition-colors">
+<td class="px-6 py-4 font-mono text-white">MTR-01</td>
+<td class="px-6 py-4">Wrist Rotation</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Optimal</span></td>
+<td class="px-6 py-4">12%</td>
+<td class="px-6 py-4">98.5%</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-white"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-[#222549]/30 transition-colors">
+<td class="px-6 py-4 font-mono text-white">MTR-02</td>
+<td class="px-6 py-4">Finger Flexion (Index)</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">Optimal</span></td>
+<td class="px-6 py-4">45%</td>
+<td class="px-6 py-4">97.2%</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-white"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-[#222549]/30 transition-colors">
+<td class="px-6 py-4 font-mono text-white">MTR-03</td>
+<td class="px-6 py-4">Thumb Opposition</td>
+<td class="px-6 py-4"><span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">Calibrating</span></td>
+<td class="px-6 py-4">--</td>
+<td class="px-6 py-4">--</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-white"><span class="material-symbols-outlined text-[20px]">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+const canvas = document.getElementById("eegCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = canvas.offsetWidth;
+canvas.height = 260;
+
+const w = canvas.width;
+const h = canvas.height;
+const mid = h / 2;
+
+let t = 0;
+
+// EEG band DOM
+const alphaEl = document.getElementById("alphaVal");
+const betaEl  = document.getElementById("betaVal");
+const thetaEl = document.getElementById("thetaVal");
+const deltaEl = document.getElementById("deltaVal");
+
+// Grid
+function drawGrid() {
+    ctx.strokeStyle = "rgba(255,255,255,0.05)";
+    ctx.lineWidth = 1;
+
+    for (let x = 0; x < w; x += 40) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+    }
+
+    for (let y = 0; y < h; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+    }
+}
+
+// Main draw
+function drawEEG() {
+    ctx.clearRect(0, 0, w, h);
+    drawGrid();
+
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+
+    const gradient = ctx.createLinearGradient(0, 0, w, 0);
+    gradient.addColorStop(0, "#22d3ee");
+    gradient.addColorStop(0.5, "#6366f1");
+    gradient.addColorStop(1, "#d946ef");
+
+    ctx.strokeStyle = gradient;
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = "#6366f1";
+
+    let alpha = 0, beta = 0, theta = 0, delta = 0;
+
+    for (let x = 0; x < w; x++) {
+        const a = Math.sin(x * 0.02 + t) * 30;
+        const b = Math.sin(x * 0.05 + t * 1.4) * 20;
+        const th = Math.sin(x * 0.01 + t * 0.8) * 15;
+        const d = Math.sin(x * 0.005 + t * 0.4) * 10;
+
+        const y = mid + a + b + th + d;
+        ctx.lineTo(x, y);
+
+        alpha += Math.abs(a);
+        beta  += Math.abs(b);
+        theta += Math.abs(th);
+        delta += Math.abs(d);
+    }
+
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Update values (scaled µV)
+    alphaEl.textContent = (alpha / w).toFixed(1) + " uV";
+    betaEl.textContent  = (beta / w).toFixed(1) + " uV";
+    thetaEl.textContent = (theta / w).toFixed(1) + " uV";
+    deltaEl.textContent = (delta / w).toFixed(1) + " uV";
+
+    t += 0.03;
+    requestAnimationFrame(drawEEG);
+}
+
+drawEEG();
+</script>
+
+</body></html>

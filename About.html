@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroArm BCI - About</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0a1bff",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0f1023",
+                        "surface-dark": "#171936",
+                        "border-dark": "#2e326b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1023; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2e326b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0a1bff; 
+        }
+        
+        .glass-card {
+            background: rgba(23, 25, 54, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(46, 50, 107, 0.5);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(10, 27, 255, 0.5);
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
+<div class="relative flex flex-col min-h-screen w-full">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="px-6 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto w-full">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">NeuroArm BCI</h2>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary" href="#">About</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Technology</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Team</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+<span class="truncate">View Dashboard</span>
+</button>
+</div>
+<div class="md:hidden text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center w-full">
+<!-- Hero Section -->
+<div class="w-full relative px-6 md:px-10 py-12 md:py-20 flex justify-center overflow-hidden">
+<!-- Background decorative elements -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-600/20 rounded-full blur-[80px]"></div>
+</div>
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 relative z-10">
+<div class="@container">
+<div class="flex flex-col gap-8 items-center text-center">
+<h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-slate-400">
+                                Bridging the Gap Between<br/>
+<span class="text-primary glow-text">Mind and Machine</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-[720px]">
+                                We are redefining prosthetic technology by integrating advanced Brain-Computer Interfaces with robotics, restoring not just movement, but autonomy.
+                            </p>
+<div class="w-full mt-8 rounded-2xl overflow-hidden shadow-2xl border border-border-dark relative aspect-video md:aspect-[21/9]">
+<img alt="Futuristic cybernetic concept showing digital brain connection" class="w-full h-full object-cover opacity-80" data-alt="Futuristic cybernetic concept showing digital brain connection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhUxqntomAcUsv-_edt_d6204XhP8al-4OY0FEpDSiY7yUdRApPZWDFV_HluP3vz87y1Pg8H0PYgN--D153u2kPE1G4uzl4YMbBIgCV-dqVFKmvSYuoy3YyHFZbo1yphw56mLyhztfPYRrAOLG3WfHXLqUzWiFXi37UmdjKCQ5SYv3NeibHcIDySSdbZay6EGTF69ssUObOV0bcd7OZmSHAXdv_VW_MbaT6i2Sh1cfPlr_6qOuo3AS7pqt9FVGKXDYtpbEWlKWC_hy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-left">
+<span class="px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-xs font-bold text-primary mb-2 inline-block">VISION</span>
+<h3 class="text-white font-bold text-xl md:text-2xl">Seamless Integration</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- The Challenge & Solution -->
+<div class="w-full px-6 md:px-10 py-16 flex justify-center bg-surface-dark/30 border-y border-border-dark/50">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-4 text-center md:text-left">
+<h2 class="text-3xl font-bold text-white">The Challenge &amp; The Solution</h2>
+<p class="text-slate-400 max-w-2xl">
+                                Traditional prosthetics often lack intuitive control. Our solution leverages the power of the human mind to bridge this gap.
+                            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Challenge Card -->
+<div class="flex flex-col gap-6 rounded-xl border border-border-dark bg-surface-dark p-8 hover:border-red-500/30 transition-all duration-300 group">
+<div class="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 group-hover:text-red-300 group-hover:bg-red-500/20 transition-colors">
+<span class="material-symbols-outlined">accessibility_new</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-xl font-bold">The Challenge: Loss of Autonomy</h3>
+<p class="text-slate-400 leading-relaxed">
+                                        Amputation severely impacts quality of life. Current mechanical options are limited in dexterity and require complex physical movements for basic tasks, creating a disconnect between intent and action.
+                                    </p>
+</div>
+</div>
+<!-- Solution Card -->
+<div class="flex flex-col gap-6 rounded-xl border border-primary/30 bg-surface-dark p-8 shadow-[0_0_30px_rgba(10,27,255,0.05)] hover:shadow-[0_0_40px_rgba(10,27,255,0.1)] transition-all duration-300 group">
+<div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:text-white group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-xl font-bold">The Solution: BCI Integration</h3>
+<p class="text-slate-300 leading-relaxed">
+                                        Non-invasive EEG sensors decode motor imagery signals directly from the brain. Our advanced AI algorithms translate these thoughts into precise robotic movements instantly, restoring a sense of natural control.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Architecture Diagram -->
+<div class="w-full px-6 md:px-10 py-20 flex justify-center relative">
+<div class="layout-content-container flex flex-col max-w-[1080px] flex-1">
+<div class="flex flex-col items-center gap-12">
+<div class="text-center space-y-2">
+<h2 class="text-3xl font-bold text-white">System Architecture</h2>
+<p class="text-slate-400">How thoughts become motion</p>
+</div>
+<!-- Diagram Flow -->
+<div class="w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 relative mt-8">
+<!-- Line Connector Background (Desktop) -->
+<div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-border-dark to-transparent -z-10"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-4 group w-40 text-center relative">
+<div class="relative">
+<div class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">sensors</span>
+</div>
+<!-- Mobile Connector -->
+<div class="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 h-8 w-0.5 bg-border-dark"></div>
+</div>
+<div>
+<h4 class="text-white font-bold">Signal Acquisition</h4>
+<p class="text-xs text-slate-400 mt-1">EEG Headset captures brain waves</p>
+</div>
+</div>
+<!-- Arrow -->
+<span class="material-symbols-outlined text-border-dark rotate-90 md:rotate-0 text-3xl">arrow_forward</span>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-4 group w-40 text-center relative">
+<div class="relative">
+<div class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">memory</span>
+</div>
+<div class="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 h-8 w-0.5 bg-border-dark"></div>
+</div>
+<div>
+<h4 class="text-white font-bold">Processing</h4>
+<p class="text-xs text-slate-400 mt-1">AI Model decodes intent</p>
+</div>
+</div>
+<!-- Arrow -->
+<span class="material-symbols-outlined text-border-dark rotate-90 md:rotate-0 text-3xl">arrow_forward</span>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-4 group w-40 text-center relative">
+<div class="relative">
+<div class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">developer_board</span>
+</div>
+<div class="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 h-8 w-0.5 bg-border-dark"></div>
+</div>
+<div>
+<h4 class="text-white font-bold">Control</h4>
+<p class="text-xs text-slate-400 mt-1">Microcontroller drives motors</p>
+</div>
+</div>
+<!-- Arrow -->
+<span class="material-symbols-outlined text-border-dark rotate-90 md:rotate-0 text-3xl">arrow_forward</span>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-4 group w-40 text-center">
+<div class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">precision_manufacturing</span>
+</div>
+<div>
+<h4 class="text-white font-bold">Actuation</h4>
+<p class="text-xs text-slate-400 mt-1">Prosthetic arm executes move</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technology Stack -->
+<div class="w-full px-6 md:px-10 py-16 bg-surface-dark/20 border-t border-border-dark/30">
+<div class="layout-content-container mx-auto flex flex-col max-w-[960px] flex-1">
+<h2 class="text-3xl font-bold text-white mb-10 text-center">Technology Stack</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- Tech Item -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">sensors</span>
+<h3 class="text-white font-semibold">Hardware &amp; Sensors</h3>
+</div>
+<p class="text-sm text-slate-400">OpenBCI Cyton Board, Dry EEG Electrodes, EMG auxiliary sensors.</p>
+<div class="flex gap-2 flex-wrap mt-auto pt-2">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">OpenBCI</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">3D Printing</span>
+</div>
+</div>
+<!-- Tech Item -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-purple-400">smart_toy</span>
+<h3 class="text-white font-semibold">AI &amp; Machine Learning</h3>
+</div>
+<p class="text-sm text-slate-400">Signal classification using CSP and LDA algorithms for motor imagery decoding.</p>
+<div class="flex gap-2 flex-wrap mt-auto pt-2">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Python</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">TensorFlow</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Scikit-learn</span>
+</div>
+</div>
+<!-- Tech Item -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-400">memory</span>
+<h3 class="text-white font-semibold">Embedded Systems</h3>
+</div>
+<p class="text-sm text-slate-400">Real-time processing unit controlling servo motors with low latency.</p>
+<div class="flex gap-2 flex-wrap mt-auto pt-2">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">ESP32</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Arduino C++</span>
+</div>
+</div>
+<!-- Tech Item -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-400">wifi</span>
+<h3 class="text-white font-semibold">IoT Connectivity</h3>
+</div>
+<p class="text-sm text-slate-400">Wireless data transmission for remote monitoring and diagnostics.</p>
+<div class="flex gap-2 flex-wrap mt-auto pt-2">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">MQTT</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">WebSockets</span>
+</div>
+</div>
+<!-- Tech Item -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-400">dashboard</span>
+<h3 class="text-white font-semibold">Web Interface</h3>
+</div>
+<p class="text-sm text-slate-400">Interactive dashboard for visualization of brain signals and device status.</p>
+<div class="flex gap-2 flex-wrap mt-auto pt-2">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">React</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Tailwind</span>
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Node.js</span>
+</div>
+</div>
+<!-- Tech Item -->
+<div class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300 border-dashed border-2 border-slate-700 bg-transparent flex items-center justify-center">
+<div class="text-center text-slate-500">
+<span class="material-symbols-outlined mb-2">add_circle</span>
+<p class="text-sm font-medium">More to come...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Team Section -->
+<div class="w-full px-6 md:px-10 py-20 flex justify-center">
+<div class="layout-content-container mx-auto flex flex-col max-w-[960px] flex-1">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-white mb-2">Meet the Innovators</h2>
+<p class="text-slate-400">The multidisciplinary team behind NeuroArm</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Profile Card -->
+<div class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+<img alt="Portrait of Sarah Chen, Lead Engineer" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20" data-alt="Portrait of Sarah Chen, Lead Engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7cM2hQiI3DHTqiWWduP0V91Bu-Jf0cdxnoC9TAZWQ6ZFWYoO9wedQvvJAQnWRYx-RT5wleGCge3I855bYTVunMvfEOMgHhzppE_pkYcuJAIG2xNNXLKD5Fs_FNsyCcYURDexSIvIx68LUI2QIjaDKtokBKUWT7y0h-AWt_hgO7lQJrfJFQup4k9DY3ubz50WF3-k1IBnm4qmasExTLiSR-Qj3iJkJY5TU6bTr1gVA_Vs_10JZzWotpBjaJMg_0MHh7GY5mAeuANQ7"/>
+<h3 class="font-bold text-white text-lg">Sarah Chen</h3>
+<p class="text-primary text-sm font-medium mb-3">Lead BCI Engineer</p>
+<p class="text-slate-400 text-xs text-center mb-4">Specializing in EEG signal processing and pattern recognition.</p>
+<div class="flex gap-3 mt-auto">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">in</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">github</span></a>
+</div>
+</div>
+<!-- Profile Card -->
+<div class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+<img alt="Portrait of David Okonjo, Robotics Specialist" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20" data-alt="Portrait of David Okonjo, Robotics Specialist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMxY7963X6bbJKFJEYEcFWBsu0z2xGqVoTyILt2kig2_TwbvrUG0eWX2MIUIHjASmxTo6diXOK7f_PvbOpAv6ppf1Xqg1WxTyp59fGLe8FZN0d1024I7_ABdvpqbd7qTYcF6P_lPznfn06OWT5TUuHoZ4vgxjE1anOwvkvOAPxqSIwI5R8cPBEVKQTjFYYAAz3xVSy0tRSAUXaCV27Mj4X8zpjUtyRDkk40QAqqDIxV3eHhG_SZ_mHO4BZqXrgTasKmuu8jDaLBAS8"/>
+<h3 class="font-bold text-white text-lg">David Okonjo</h3>
+<p class="text-primary text-sm font-medium mb-3">Robotics Architect</p>
+<p class="text-slate-400 text-xs text-center mb-4">Expert in mechatronics and fine motor actuation systems.</p>
+<div class="flex gap-3 mt-auto">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">in</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">github</span></a>
+</div>
+</div>
+<!-- Profile Card -->
+<div class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+<img alt="Portrait of Emily Zhang, Data Scientist" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20" data-alt="Portrait of Emily Zhang, Data Scientist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSUMlArFrX3StYPW7SD_vfPuUHLUU9bkJLd06RQXB6HvcCEbzdDgfL83GXS0J6pbi5CsRvHgju-792FJGwtcNhkeM95uGkz4ldkzYQcSDue8U7GONKFUuyXOOo13Uc26AT3ut_CcfzZGX0SXtT6ngl9cAO7gVXUztzU5hejHk4paKmxDaUxh-RNRzbvn70dR_jKUQDi5ksVlRtMkOJaL38h6wPgGzxnQB6e50ztD74I_d7BrXV9i_w1cwup0s8IAxjYMSB0ZP24WnS"/>
+<h3 class="font-bold text-white text-lg">Emily Zhang</h3>
+<p class="text-primary text-sm font-medium mb-3">ML Researcher</p>
+<p class="text-slate-400 text-xs text-center mb-4">Developing adaptive learning models for user calibration.</p>
+<div class="flex gap-3 mt-auto">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">in</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">github</span></a>
+</div>
+</div>
+<!-- Profile Card -->
+<div class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+<img alt="Portrait of James Wilson, IoT Developer" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20" data-alt="Portrait of James Wilson, IoT Developer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL58HRD-q1-xEqhaXS4vubRR2qOHJvUlVaFkOSQzC60CP3Zene43X907OBz7xTUc6U6PUF45aFDgB-2ExnapPbpAgkAXOLLFJEXKvv5DZTOcRjeGWLXSVne4RRgxwT0Bn8_wVwV6n3LghdqOnC20Fu_tJ2lY2skJnaa-ktnNEWnhWLOgLFiX3yTg1i6W_oQbyoAbl21G9cw5BdW3uD8b2bZqwLUo7lTNMXdbOnrI_ak5LX0n1YAX1pSs5LsvJ8XWI-jdV5q9Cb9YG7"/>
+<h3 class="font-bold text-white text-lg">James Wilson</h3>
+<p class="text-primary text-sm font-medium mb-3">IoT Specialist</p>
+<p class="text-slate-400 text-xs text-center mb-4">Building the secure infrastructure for real-time telemetry.</p>
+<div class="flex gap-3 mt-auto">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">in</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="text-lg">github</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-border-dark bg-background-dark py-12 px-6 md:px-10">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<span class="font-bold">NeuroArm BCI</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-400">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-white transition-colors" href="#">Contact Support</a>
+</div>
+<div class="text-slate-500 text-sm">
+                    © 2024 NeuroArm Project. All rights reserved.
+                </div>
+</div>
+</footer>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+    checkAuth();
+</script>
+
+</body></html>

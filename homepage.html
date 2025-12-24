@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NeuroArm BCI - About</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0a1bff",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0f1023",
+                        "surface-dark": "#171936",
+                        "border-dark": "#2e326b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1023;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2e326b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0a1bff;
+        }
+
+        .glass-card {
+            background: rgba(23, 25, 54, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(46, 50, 107, 0.5);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(10, 27, 255, 0.5);
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
+    <div class="relative flex flex-col min-h-screen w-full">
+        <!-- Navigation -->
+        <header
+            class="sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+            <div class="px-6 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto w-full">
+                <div class="flex items-center gap-4 text-slate-900 dark:text-white">
+                    <div class="size-8 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl">psychology</span>
+                    </div>
+                    <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">NeuroArm BCI</h2>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <nav class="flex items-center gap-6">
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#home">Home</a>
+                        <a class="text-sm font-medium text-primary" href="#about">About</a> <!-- optional -->
+                        <a class="text-sm font-medium hover:text-primary transition-colors"
+                            href="#technology">Technology</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#team">Team</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
+                    </nav>
+                    <a href="../frontend/Authentication.html">
+                        <button
+                            class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+                            <span class="truncate">View Dashboard</span>
+                        </button>
+                    </a>
+                </div>
+                <div class="md:hidden text-slate-900 dark:text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow flex flex-col items-center w-full">
+            <!-- Hero Section -->
+            <div class="w-full relative px-6 md:px-10 py-12 md:py-20 flex justify-center overflow-hidden">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                    <div
+                        class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow">
+                    </div>
+                    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-600/20 rounded-full blur-[80px]">
+                    </div>
+                </div>
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 relative z-10">
+                    <div class="@container">
+                        <div class="flex flex-col gap-8 items-center text-center">
+                            <h1
+                                class="text-4xl md:text-6xl font-black leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-slate-400">
+                                Bridging the Gap Between<br />
+                                <span class="text-primary glow-text">Mind and Machine</span>
+                            </h1>
+                            <p
+                                class="text-slate-600 dark:text-slate-300 text-lg md:text-xl font-normal leading-relaxed max-w-[720px]">
+                                We are redefining prosthetic technology by integrating advanced Brain-Computer
+                                Interfaces with robotics, restoring not just movement, but autonomy.
+                            </p>
+                            <div
+                                class="w-full mt-8 rounded-2xl overflow-hidden shadow-2xl border border-border-dark relative aspect-video md:aspect-[21/9]">
+                                <img alt="Futuristic cybernetic concept showing digital brain connection"
+                                    class="w-full h-full object-cover opacity-80"
+                                    data-alt="Futuristic cybernetic concept showing digital brain connection"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhUxqntomAcUsv-_edt_d6204XhP8al-4OY0FEpDSiY7yUdRApPZWDFV_HluP3vz87y1Pg8H0PYgN--D153u2kPE1G4uzl4YMbBIgCV-dqVFKmvSYuoy3YyHFZbo1yphw56mLyhztfPYRrAOLG3WfHXLqUzWiFXi37UmdjKCQ5SYv3NeibHcIDySSdbZay6EGTF69ssUObOV0bcd7OZmSHAXdv_VW_MbaT6i2Sh1cfPlr_6qOuo3AS7pqt9FVGKXDYtpbEWlKWC_hy" />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent">
+                                </div>
+                                <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-left">
+                                    <span
+                                        class="px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-xs font-bold text-primary mb-2 inline-block">VISION</span>
+                                    <h3 class="text-white font-bold text-xl md:text-2xl">Seamless Integration</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Challenge & Solution -->
+            <div id="about"
+                class="w-full px-6 md:px-10 py-16 flex justify-center bg-surface-dark/30 border-y border-border-dark/50">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <div class="flex flex-col gap-12">
+                        <div class="flex flex-col gap-4 text-center md:text-left">
+                            <h2 class="text-3xl font-bold text-white">The Challenge &amp; The Solution</h2>
+                            <p class="text-slate-400 max-w-2xl">
+                                Traditional prosthetics often lack intuitive control. Our solution leverages the power
+                                of the human mind to bridge this gap.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Challenge Card -->
+                            <div
+                                class="flex flex-col gap-6 rounded-xl border border-border-dark bg-surface-dark p-8 hover:border-red-500/30 transition-all duration-300 group">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 group-hover:text-red-300 group-hover:bg-red-500/20 transition-colors">
+                                    <span class="material-symbols-outlined">accessibility_new</span>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="text-white text-xl font-bold">The Challenge: Loss of Autonomy</h3>
+                                    <p class="text-slate-400 leading-relaxed">
+                                        Amputation severely impacts quality of life. Current mechanical options are
+                                        limited in dexterity and require complex physical movements for basic tasks,
+                                        creating a disconnect between intent and action.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Solution Card -->
+                            <div
+                                class="flex flex-col gap-6 rounded-xl border border-primary/30 bg-surface-dark p-8 shadow-[0_0_30px_rgba(10,27,255,0.05)] hover:shadow-[0_0_40px_rgba(10,27,255,0.1)] transition-all duration-300 group">
+                                <div
+                                    class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:text-white group-hover:bg-primary transition-colors">
+                                    <span class="material-symbols-outlined">psychology</span>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <h3 class="text-white text-xl font-bold">The Solution: BCI Integration</h3>
+                                    <p class="text-slate-300 leading-relaxed">
+                                        Non-invasive EEG sensors decode motor imagery signals directly from the brain.
+                                        Our advanced AI algorithms translate these thoughts into precise robotic
+                                        movements instantly, restoring a sense of natural control.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Architecture Diagram -->
+            <div class="w-full px-6 md:px-10 py-20 flex justify-center relative">
+                <div class="layout-content-container flex flex-col max-w-[1080px] flex-1">
+                    <div class="flex flex-col items-center gap-12">
+                        <div class="text-center space-y-2">
+                            <h2 class="text-3xl font-bold text-white">System Architecture</h2>
+                            <p class="text-slate-400">How thoughts become motion</p>
+                        </div>
+                        <!-- Diagram Flow -->
+                        <div
+                            class="w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 relative mt-8">
+                            <!-- Line Connector Background (Desktop) -->
+                            <div
+                                class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-border-dark to-transparent -z-10">
+                            </div>
+                            <!-- Step 1 -->
+                            <div class="flex flex-col items-center gap-4 group w-40 text-center relative">
+                                <div class="relative">
+                                    <div
+                                        class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+                                        <span
+                                            class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">sensors</span>
+                                    </div>
+                                    <!-- Mobile Connector -->
+                                    <div
+                                        class="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 h-8 w-0.5 bg-border-dark">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">Signal Acquisition</h4>
+                                    <p class="text-xs text-slate-400 mt-1">EEG Headset captures brain waves</p>
+                                </div>
+                            </div>
+                            <!-- Arrow -->
+                            <span
+                                class="material-symbols-outlined text-border-dark rotate-90 md:rotate-0 text-3xl">arrow_forward</span>
+                            <!-- Step 2 -->
+                            <div class="flex flex-col items-center gap-4 group w-40 text-center relative">
+                                <div class="relative">
+                                    <div
+                                        class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+                                        <span
+                                            class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">memory</span>
+                                    </div>
+                                    <div
+                                        class="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 h-8 w-0.5 bg-border-dark">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">Processing</h4>
+                                    <p class="text-xs text-slate-400 mt-1">AI Model decodes intent</p>
+                                </div>
+                            </div>
+                            <!-- Arrow -->
+                            <span
+                                class="material-symbols-outlined text-border-dark rotate-90 md:rotate-0 text-3xl">arrow_forward</span>
+                            <!-- Step 3 -->
+                            <div class="flex flex-col items-center gap-4 group w-40 text-center relative">
+                                <div class="relative">
+                                    <div
+                                        class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+                                        <span
+                                            class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">developer_board</span>
+                                    </div>
+                                    <div
+                                        class="md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 h-8 w-0.5 bg-border-dark">
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">Control</h4>
+                                    <p class="text-xs text-slate-400 mt-1">Microcontroller drives motors</p>
+                                </div>
+                            </div>
+                            <!-- Arrow -->
+                            <span
+                                class="material-symbols-outlined text-border-dark rotate-90 md:rotate-0 text-3xl">arrow_forward</span>
+                            <!-- Step 4 -->
+                            <div class="flex flex-col items-center gap-4 group w-40 text-center">
+                                <div
+                                    class="w-24 h-24 rounded-full bg-surface-dark border-2 border-border-dark flex items-center justify-center z-10 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(10,27,255,0.3)] transition-all duration-300">
+                                    <span
+                                        class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary transition-colors">precision_manufacturing</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold">Actuation</h4>
+                                    <p class="text-xs text-slate-400 mt-1">Prosthetic arm executes move</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Technology Stack -->
+            <div id="technology" class="w-full px-6 md:px-10 py-16 bg-surface-dark/20 border-t border-border-dark/30">
+                <div class="layout-content-container mx-auto flex flex-col max-w-[960px] flex-1">
+                    <h2 class="text-3xl font-bold text-white mb-10 text-center">Technology Stack</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <!-- Tech Item -->
+                        <div
+                            class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary">sensors</span>
+                                <h3 class="text-white font-semibold">Hardware &amp; Sensors</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">OpenBCI Cyton Board, Dry EEG Electrodes, EMG auxiliary
+                                sensors.</p>
+                            <div class="flex gap-2 flex-wrap mt-auto pt-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">OpenBCI</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">3D Printing</span>
+                            </div>
+                        </div>
+                        <!-- Tech Item -->
+                        <div
+                            class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-purple-400">smart_toy</span>
+                                <h3 class="text-white font-semibold">AI &amp; Machine Learning</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">Signal classification using CSP and LDA algorithms for
+                                motor imagery decoding.</p>
+                            <div class="flex gap-2 flex-wrap mt-auto pt-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Python</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">TensorFlow</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Scikit-learn</span>
+                            </div>
+                        </div>
+                        <!-- Tech Item -->
+                        <div
+                            class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-green-400">memory</span>
+                                <h3 class="text-white font-semibold">Embedded Systems</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">Real-time processing unit controlling servo motors with
+                                low latency.</p>
+                            <div class="flex gap-2 flex-wrap mt-auto pt-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">ESP32</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Arduino C++</span>
+                            </div>
+                        </div>
+                        <!-- Tech Item -->
+                        <div
+                            class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-blue-400">wifi</span>
+                                <h3 class="text-white font-semibold">IoT Connectivity</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">Wireless data transmission for remote monitoring and
+                                diagnostics.</p>
+                            <div class="flex gap-2 flex-wrap mt-auto pt-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">MQTT</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">WebSockets</span>
+                            </div>
+                        </div>
+                        <!-- Tech Item -->
+                        <div
+                            class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-orange-400">dashboard</span>
+                                <h3 class="text-white font-semibold">Web Interface</h3>
+                            </div>
+                            <p class="text-sm text-slate-400">Interactive dashboard for visualization of brain signals
+                                and device status.</p>
+                            <div class="flex gap-2 flex-wrap mt-auto pt-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">React</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Tailwind</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Node.js</span>
+                            </div>
+                        </div>
+                        <!-- Tech Item -->
+                        <div
+                            class="glass-card p-5 rounded-lg flex flex-col gap-3 hover:-translate-y-1 transition-transform duration-300 border-dashed border-2 border-slate-700 bg-transparent flex items-center justify-center">
+                            <div class="text-center text-slate-500">
+                                <span class="material-symbols-outlined mb-2">add_circle</span>
+                                <p class="text-sm font-medium">More to come...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Section -->
+            <div id="team" class="w-full px-6 md:px-10 py-20 flex justify-center">
+                <div class="layout-content-container mx-auto flex flex-col max-w-[960px] flex-1">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-white mb-2">Meet the Innovators</h2>
+                        <p class="text-slate-400">The multidisciplinary team behind NeuroArm</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Profile Card -->
+                        <div
+                            class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+                            <img alt="Portrait of vedant Kuralkar, Lead Engineer"
+                                class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20"
+                                data-alt="Portrait of Sarah Chen, Lead Engineer"
+                                src="https://randomuser.me/api/portraits/men/32.jpg" />
+                            <h3 class="font-bold text-white text-lg">Vedant Kuralkar</h3>
+                            <p class="text-primary text-sm font-medium mb-3">Full Stack Developer</p>
+                            <p class="text-slate-400 text-xs text-center mb-4">Specializing in EEG signal processing and
+                                pattern recognition.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">in</span></a>
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">github</span></a>
+                            </div>
+                        </div>
+                        <!-- Profile Card -->
+                        <div
+                            class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+                            <img alt="Portrait of David Okonjo, Robotics Specialist"
+                                class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20"
+                                data-alt="Portrait of David Okonjo, Robotics Specialist"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMxY7963X6bbJKFJEYEcFWBsu0z2xGqVoTyILt2kig2_TwbvrUG0eWX2MIUIHjASmxTo6diXOK7f_PvbOpAv6ppf1Xqg1WxTyp59fGLe8FZN0d1024I7_ABdvpqbd7qTYcF6P_lPznfn06OWT5TUuHoZ4vgxjE1anOwvkvOAPxqSIwI5R8cPBEVKQTjFYYAAz3xVSy0tRSAUXaCV27Mj4X8zpjUtyRDkk40QAqqDIxV3eHhG_SZ_mHO4BZqXrgTasKmuu8jDaLBAS8" />
+                            <h3 class="font-bold text-white text-lg">Pushpak P.Thakare</h3>
+                            <p class="text-primary text-sm font-medium mb-3">AI/ML RESEARCHER</p>
+                            <p class="text-slate-400 text-xs text-center mb-4">Expert in mechatronics and fine motor
+                                actuation systems.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">in</span></a>
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">github</span></a>
+                            </div>
+                        </div>
+                        <!-- Profile Card -->
+                        <div
+                            class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+                            <img alt="Portrait of Emily Zhang, Data Scientist"
+                                class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20"
+                                data-alt="Portrait of Emily Zhang, Data Scientist"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSUMlArFrX3StYPW7SD_vfPuUHLUU9bkJLd06RQXB6HvcCEbzdDgfL83GXS0J6pbi5CsRvHgju-792FJGwtcNhkeM95uGkz4ldkzYQcSDue8U7GONKFUuyXOOo13Uc26AT3ut_CcfzZGX0SXtT6ngl9cAO7gVXUztzU5hejHk4paKmxDaUxh-RNRzbvn70dR_jKUQDi5ksVlRtMkOJaL38h6wPgGzxnQB6e50ztD74I_d7BrXV9i_w1cwup0s8IAxjYMSB0ZP24WnS" />
+                            <h3 class="font-bold text-white text-lg">Prajwal Fupare</h3>
+                            <p class="text-primary text-sm font-medium mb-3">FrontEnd Developer</p>
+                            <p class="text-slate-400 text-xs text-center mb-4">Developing adaptive learning models for
+                                user calibration.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">in</span></a>
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">github</span></a>
+                            </div>
+                        </div>
+                        <!-- Profile Card -->
+                        <div
+                            class="flex flex-col items-center bg-surface-dark rounded-xl p-6 border border-border-dark hover:border-primary/50 transition-colors">
+                            <img alt="Portrait of James Wilson, IoT Developer"
+                                class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-primary/20"
+                                data-alt="Portrait of James Wilson, IoT Developer"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL58HRD-q1-xEqhaXS4vubRR2qOHJvUlVaFkOSQzC60CP3Zene43X907OBz7xTUc6U6PUF45aFDgB-2ExnapPbpAgkAXOLLFJEXKvv5DZTOcRjeGWLXSVne4RRgxwT0Bn8_wVwV6n3LghdqOnC20Fu_tJ2lY2skJnaa-ktnNEWnhWLOgLFiX3yTg1i6W_oQbyoAbl21G9cw5BdW3uD8b2bZqwLUo7lTNMXdbOnrI_ak5LX0n1YAX1pSs5LsvJ8XWI-jdV5q9Cb9YG7" />
+                            <h3 class="font-bold text-white text-lg">Abhijeet Ingale</h3>
+                            <p class="text-primary text-sm font-medium mb-3">IoT Specialist</p>
+                            <p class="text-slate-400 text-xs text-center mb-4">Building the secure infrastructure for
+                                real-time telemetry.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">in</span></a>
+                                <a class="text-slate-500 hover:text-white transition-colors" href="#"><span
+                                        class="text-lg">github</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="border-t border-border-dark bg-background-dark py-12 px-6 md:px-10">
+            <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2 text-white">
+                    <span class="material-symbols-outlined text-primary">psychology</span>
+                    <span class="font-bold">NeuroArm BCI</span>
+                </div>
+                <div class="flex gap-8 text-sm text-slate-400">
+                    <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+                    <a class="hover:text-white transition-colors" href="#">Contact Support</a>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    © 2024 NeuroArm Project. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        checkAuth();
+    </script>
+
+</body>
+
+</html>
+
+<!-- Hero Section -->
+<div class="relative flex flex-col items-center justify-center pt-10 pb-10 lg:pt-20 lg:pb-10">
+    <!-- Background Glow -->
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0">
+    </div>
+    <div class="layout-container flex h-full grow flex-col z-10 w-full">
+        <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+            <div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+                <div class="@container">
+                    <div class="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20 items-center">
+                        <!-- Text Content -->
+                        <div class="flex flex-col gap-6 flex-1 text-center lg:text-left">
+                            <div class="flex flex-col gap-4">
+                                <div
+                                    class="inline-flex items-center gap-2 self-center lg:self-start px-3 py-1 rounded-full bg-white/5 border border-white/10 w-fit">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    <span class="text-xs font-medium text-slate-300 uppercase tracking-wider">System
+                                        Operational</span>
+                                </div>
+                                <h1
+                                    class="text-white text-5xl md:text-6xl font-black leading-[1.1] tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-slate-400">
+                                    Where Mind Meets Machine
+                                </h1>
+                                <h2
+                                    class="text-slate-400 text-lg md:text-xl font-normal leading-relaxed max-w-[600px] mx-auto lg:mx-0">
+                                    Empowering lives through next-generation Brain-Computer Interface technology.
+                                    Experience seamless prosthetic control powered by real-time EEG analytics and AI
+                                    prediction.
+                                </h2>
+                            </div>
+                            <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                                <a href="../frontend/Authentication.html">
+                                    <button
+                                        class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary hover:bg-blue-700 text-white text-base font-bold transition-all shadow-[0_0_25px_rgba(10,27,255,0.4)] hover:shadow-[0_0_35px_rgba(10,27,255,0.6)]">
+                                        <span class="truncate">View Dashboard</span>
+                                    </button>
+                                </a>
+                                <button
+                                    class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-transparent border border-white/20 hover:bg-white/10 text-white text-base font-bold transition-all backdrop-blur-sm">
+                                    Get Started
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Hero Image/Visual -->
+                        <div class="flex-1 w-full max-w-[600px] relative">
+                            <div
+                                class="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-surface-dark group">
+                                <!-- Gradient overlay for depth -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-background-dark/80 via-transparent to-transparent z-10">
+                                </div>
+                                <!-- Main Visual -->
+                                <div class="w-full h-full bg-cover bg-center"
+                                    data-alt="Futuristic robotic prosthetic arm visualized in a dark laboratory setting with blue lighting"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYmu9BO1QoJsqAp0bsfBRa_ePWtd-8eTxvEeqTZkSJfyPdXa90brX2cPJdC9Zh8JC05KngKHtd4hqnBZ6dXPGyWY4-cUnG832YxIsXlXjg2-X9sC2ftBbcJ28l0MiLy-2mLmcZFP6mTQtYkxxv0pAiaxqLI2CGXBCkXwoSIsGLHFbxJ1eN5G048LKfXSn_92VKMXWlNqdG30IuTL2SMk36Ro9dliXOsiLvl5ZNmbCMG4Qu6-6pztG4MZROGDtyMllHy0ZQRttm9BOz");'>
+                                </div>
+                                <!-- Overlay UI Elements mimicking AR interface -->
+                                <div
+                                    class="absolute bottom-6 left-6 right-6 z-20 p-4 glass-panel rounded-xl border border-white/10 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2 rounded-lg bg-primary/20 text-primary">
+                                            <span class="material-symbols-outlined text-xl">graphic_eq</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-slate-400">Signal Strength</div>
+                                            <div class="text-sm font-bold text-white">98.4% Optimal</div>
+                                        </div>
+                                    </div>
+                                    <div class="h-8 w-[1px] bg-white/10"></div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                                            <span class="material-symbols-outlined text-xl">bolt</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs text-slate-400">Latency</div>
+                                            <div class="text-sm font-bold text-white">12ms</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Live Stats Strip -->
+<div class="w-full border-y border-white/5 bg-surface-dark/50 backdrop-blur-sm">
+    <div class="layout-container flex justify-center">
+        <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-6">
+            <div class="layout-content-container flex max-w-[1200px] flex-1 overflow-x-auto no-scrollbar">
+                <div class="flex w-full min-w-max justify-between gap-8 md:gap-16">
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 rounded-full bg-blue-500/10 text-blue-400">
+                            <span class="material-symbols-outlined">speed</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider">Signal
+                                Latency</span>
+                            <span class="text-white text-xl font-bold font-mono">12ms</span>
+                        </div>
+                    </div>
+                    <div class="w-[1px] h-full bg-white/5"></div>
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 rounded-full bg-purple-500/10 text-purple-400">
+                            <span class="material-symbols-outlined">hub</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider">Active
+                                Nodes</span>
+                            <span class="text-white text-xl font-bold font-mono">64</span>
+                        </div>
+                    </div>
+                    <div class="w-[1px] h-full bg-white/5"></div>
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 rounded-full bg-green-500/10 text-green-400">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider">System
+                                Status</span>
+                            <span class="text-white text-xl font-bold font-mono">Operational</span>
+                        </div>
+                    </div>
+                    <div class="w-[1px] h-full bg-white/5 hidden md:block"></div>
+                    <div class="flex items-center gap-4 hidden md:flex">
+                        <div class="p-2 rounded-full bg-orange-500/10 text-orange-400">
+                            <span class="material-symbols-outlined">battery_charging_full</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider">Battery
+                                Life</span>
+                            <span class="text-white text-xl font-bold font-mono">8.5 Hrs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features Section -->
+<div class="relative py-20 bg-background-dark">
+    <div class="layout-container flex flex-col items-center">
+        <div class="px-4 md:px-10 lg:px-40 w-full max-w-[1200px]">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+                <div class="flex flex-col gap-4 max-w-[600px]">
+                    <h2 class="text-white text-3xl md:text-4xl font-bold leading-tight">
+                        Core Technologies
+                    </h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        Our platform integrates cutting-edge innovations to restore natural movement, bridging the gap
+                        between biological intent and mechanical action.
+                    </p>
+                </div>
+                <a class="hidden md:flex items-center gap-2 text-primary font-medium hover:text-blue-400 transition-colors"
+                    href="#">
+                    Explore Technical Docs <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div
+                    class="group flex flex-col p-6 rounded-xl glass-panel border border-border-dark hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="mb-6 w-12 h-12 flex items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl">waves</span>
+                    </div>
+                    <h3 class="text-white text-lg font-bold mb-2">Brain Signal Processing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">High-fidelity EEG decoding algorithms for accurate
+                        signal interpretation and noise reduction.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div
+                    class="group flex flex-col p-6 rounded-xl glass-panel border border-border-dark hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="mb-6 w-12 h-12 flex items-center justify-center rounded-lg bg-purple-500/10 text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl">psychology</span>
+                    </div>
+                    <h3 class="text-white text-lg font-bold mb-2">AI Motion Prediction</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Advanced machine learning models that anticipate
+                        user movement intent before action occurs.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div
+                    class="group flex flex-col p-6 rounded-xl glass-panel border border-border-dark hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="mb-6 w-12 h-12 flex items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl">sensors</span>
+                    </div>
+                    <h3 class="text-white text-lg font-bold mb-2">IoT Real-Time Monitoring</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Continuous real-time latency tracking, device
+                        diagnostics, and cloud sync capabilities.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div
+                    class="group flex flex-col p-6 rounded-xl glass-panel border border-border-dark hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-1">
+                    <div
+                        class="mb-6 w-12 h-12 flex items-center justify-center rounded-lg bg-orange-500/10 text-orange-400 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-2xl">precision_manufacturing</span>
+                    </div>
+                    <h3 class="text-white text-lg font-bold mb-2">Robotic Precision Control</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Fine motor control systems with haptic feedback
+                        loops for delicate object manipulation.</p>
+                </div>
+            </div>
+            <div class="mt-8 flex justify-center md:hidden">
+                <a class="flex items-center gap-2 text-primary font-medium" href="#">
+                    Explore Technical Docs <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="border-t border-white/5 bg-[#0a0c1a] py-12">
+    <div class="layout-container flex flex-col items-center">
+        <div class="px-4 md:px-10 lg:px-40 w-full max-w-[1200px]">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-500 text-2xl">neurology</span>
+                    <span class="text-slate-300 text-lg font-bold">NeuroLink BCI</span>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 text-slate-400">
+                    <a class="hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
+                    <a class="hover:text-primary transition-colors text-sm" href="#">Contact Support</a>
+                </div>
+                <div class="flex gap-4">
+                    <a class="text-slate-500 hover:text-white transition-colors" href="#">
+                        <img alt="X (Twitter)" class="w-5 h-5 opacity-60 hover:opacity-100"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3IaS2Pl7p_kmyD682TO2Sz1UwLvm2-0QkmHXaqy590-UxFyfuVc0pawX3Edvx6BKe8pfh7iBu5t2AmA10GRSJzvN7xVa7_f-WiLz7QOOVxLGQdyvJWNROUFRQJ3gpBW3ruDZW36aw-KqXWrYgfmFpy3Gp4g9zA9xdhmZujGV_9IVZDjayQDrJfX2o03G8bneGeJmh44Hv3ONab3b1gv_q6Qy3OESdJ9QXp2Gen9aj_yUnpyTBF_dmNcMSWcbPBZ1CPf7NF7fwFs7H" />
+                    </a>
+                    <a class="text-slate-500 hover:text-white transition-colors" href="#">
+                        <img alt="LinkedIn" class="w-5 h-5 opacity-60 hover:opacity-100"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxr0WTZyGxOeiWXkBos-oQVJKoJSSqH5_Rv8rEPu9URcBF7dWscCGrlKktKzwnBGjzB5DSURwaA5vqDfALEIjG90uHAosbNIOOLlyfHjjv4F6DthnkFEBUmN451G6SPjzqh3FJqR_LgYq1H0LHyrKFdgWSVBd6Eop3LB2izibg61wXYbQqf6S_uPcLZVi7USz20a3VADeTj5tKZuWDmKxvSN81r__IkG0T13AHTG6de7lpuDuasNHzaknx3qHc-P5mBNudoxzDITRO" />
+                    </a>
+                    <a class="text-slate-500 hover:text-white transition-colors" href="#">
+                        <img alt="GitHub" class="w-5 h-5 opacity-60 hover:opacity-100"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkDWidcCpsw_ztB5H0SMaONC69-xI9-b-j519YMhbYYctVDeFpV7dVtQg2WIN9jiGUwr-B70tb8ydFAItPXb4HAVXMfSLxKOiTdUBvGZ_LrchaFESe4b2BtsJvMo2G6DZ-ecdirwXansJ7XRZfqKLqSyhr2o21aKkIsJxZ6G3CJMoOTXedE3bmpnO0RNCMw4LEmUpdalvjVJ3162g5ZGS-1E8rZ0cLhGxvXv9VVm31ob9SsgDtxWZYA1W2NTgdQxI2jATyfchDa1x6" />
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-white/5 text-center">
+                <p class="text-slate-600 text-sm">© 2024 NeuroLink BCI. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+<!-- Main Content -->
+<main class="flex-grow">
+    <!-- Hero Header -->
+    <div id="contact" class="relative px-6 py-12 lg:px-20 lg:py-20 flex flex-col items-center text-center">
+        <!-- Background decorative element -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-primary/20 blur-[120px] rounded-full pointer-events-none">
+        </div>
+        <h1 class="relative z-10 text-4xl lg:text-6xl font-black tracking-tight mb-4">
+            Connect with the <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-primary">Future</span>
+        </h1>
+        <p class="relative z-10 text-text-muted text-lg max-w-2xl">
+            Whether you are a patient looking for advanced mobility solutions, a researcher seeking collaboration, or an
+            investor, our team is ready to listen.
+        </p>
+    </div>
+    <div class="layout-container flex justify-center px-4 pb-20 lg:px-10">
+        <div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Column: Contact Form -->
+            <div class="lg:col-span-7 flex flex-col gap-6">
+                <div class="glass-panel p-6 lg:p-10 rounded-2xl relative overflow-hidden group">
+                    <!-- Decorative gradient border effect -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    </div>
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary">mail</span>
+                        Send us a Message
+                    </h2>
+                    <form class="flex flex-col gap-5 relative z-10">
+                        <div class="flex flex-col sm:flex-row gap-5">
+                            <label class="flex flex-col flex-1">
+                                <span class="text-white text-sm font-medium pb-2">First Name</span>
+                                <input
+                                    class="form-input w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                    placeholder="Jane" type="text" />
+                            </label>
+                            <label class="flex flex-col flex-1">
+                                <span class="text-white text-sm font-medium pb-2">Last Name</span>
+                                <input
+                                    class="form-input w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                    placeholder="Doe" type="text" />
+                            </label>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-5">
+                            <label class="flex flex-col flex-1">
+                                <span class="text-white text-sm font-medium pb-2">Email Address</span>
+                                <input
+                                    class="form-input w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                                    placeholder="jane@example.com" type="email" />
+                            </label>
+                            <label class="flex flex-col flex-1">
+                                <span class="text-white text-sm font-medium pb-2">Subject</span>
+                                <div class="relative">
+                                    <select
+                                        class="form-select w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer">
+                                        <option>General Inquiry</option>
+                                        <option>Patient Support</option>
+                                        <option>Research Partnership</option>
+                                        <option>Investor Relations</option>
+                                    </select>
+                                    <span
+                                        class="material-symbols-outlined absolute right-4 top-3 pointer-events-none text-text-muted">expand_more</span>
+                                </div>
+                            </label>
+                        </div>
+                        <label class="flex flex-col">
+                            <span class="text-white text-sm font-medium pb-2">Message</span>
+                            <textarea
+                                class="form-textarea w-full rounded-xl border border-border-dark bg-background-dark/50 min-h-[160px] p-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                                placeholder="How can we help you today?"></textarea>
+                        </label>
+                        <div class="pt-2">
+                            <button
+                                class="group flex items-center justify-center gap-2 w-full sm:w-auto h-12 px-8 bg-primary hover:bg-blue-600 rounded-xl text-white font-bold transition-all shadow-lg hover:shadow-blue-900/40"
+                                type="button">
+                                <span>Send Message</span>
+                                <span
+                                    class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">send</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Right Column: Info & Map -->
+            <div class="lg:col-span-5 flex flex-col gap-6">
+                <!-- Contact Info Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                    <!-- Support Card -->
+                    <div
+                        class="glass-panel p-5 rounded-xl flex items-start gap-4 hover:border-primary/50 transition-colors group cursor-pointer">
+                        <div
+                            class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">support_agent</span>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold text-base">Support Team</h3>
+                            <p class="text-text-muted text-sm mt-1">For immediate assistance regarding your device.</p>
+                            <a class="text-primary text-sm font-medium mt-2 inline-block hover:underline"
+                                href="mailto:support@bci-project.com">support@bci-project.com</a>
+                        </div>
+                    </div>
+                    <!-- Partnerships Card -->
+                    <div
+                        class="glass-panel p-5 rounded-xl flex items-start gap-4 hover:border-primary/50 transition-colors group cursor-pointer">
+                        <div
+                            class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">handshake</span>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold text-base">Partnerships</h3>
+                            <p class="text-text-muted text-sm mt-1">Collaboration opportunities for labs and clinics.
+                            </p>
+                            <a class="text-primary text-sm font-medium mt-2 inline-block hover:underline"
+                                href="mailto:partners@bci-project.com">partners@bci-project.com</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Map Section -->
+                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col h-full min-h-[300px]">
+                    <div class="p-5 border-b border-border-dark flex justify-between items-center">
+                        <div>
+                            <h3 class="text-white font-bold text-base flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">location_on</span>
+                                Research Lab HQ
+                            </h3>
+                            <p class="text-text-muted text-sm">1200 Innovation Dr, Tech Park, CA</p>
+                        </div>
+                        <button
+                            class="text-xs font-medium bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg text-white transition-colors border border-white/10">
+                            Get Directions
+                        </button>
+                    </div>
+                    <!-- Simulated Map -->
+                    <div class="relative flex-1 w-full bg-[#0c0e1e] group overflow-hidden">
+                        <!-- Map Background Image -->
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
+                            data-alt="Dark stylized map of San Francisco showing streets and blocks in a futuristic grid pattern"
+                            data-location="San Francisco"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGDb5ccOwGkEY1-Z6rP2O8vWHobfKe5gmXrTZ3Q9ipx1Yg2EVfKunD-AyLO_LoLtFS4Rqrty_pgIvgexGE4QIaooFZWBlHuE5U2_d65Jx83zh-aG5bmpKjSfrtVUK53bblD3q1dnYlxyHiYAizSkKNIjN_x7_Hhdg74bUFOcVGd7Htl37FgpOyxJEllWphHzJUjiOjAcBX1kZODC1Mezfsl9PIwKUqBhlxHN2-X764ncywGs72L7wQfIb5gzwi1Kc3f4lQFgIVEGV2');">
+                        </div>
+                        <!-- Map Overlay Gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#101122] via-transparent to-transparent">
+                        </div>
+                        <!-- Animated Pin -->
+                        <div
+                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group-hover:-translate-y-[calc(50%+5px)] transition-transform duration-300">
+                            <div class="relative">
+                                <div class="size-4 bg-primary rounded-full relative z-10 shadow-[0_0_15px_#1625f3]">
+                                </div>
+                                <div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-75"></div>
+                            </div>
+                            <div
+                                class="mt-2 bg-background-dark px-3 py-1 rounded-md border border-border-dark shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                <span class="text-xs font-bold text-white whitespace-nowrap">NeuroProsthetics Lab</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQ Teaser / Footer Action -->
+    <div class="border-t border-border-dark bg-[#0a0b16]">
+        <div class="layout-container px-6 py-10 lg:px-20 text-center">
+            <h3 class="text-white text-xl font-bold mb-4">Common Questions</h3>
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
+                <a class="hover:text-primary transition-colors" href="#">How does the BCI technology work?</a>
+                <span class="text-border-dark">•</span>
+                <a class="hover:text-primary transition-colors" href="#">Is the procedure invasive?</a>
+                <span class="text-border-dark">•</span>
+                <a class="hover:text-primary transition-colors" href="#">Insurance coverage options</a>
+                <span class="text-border-dark">•</span>
+                <a class="hover:text-primary transition-colors" href="#">Clinical trial applications</a>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-background-dark py-8">
+    <div class="layout-container px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2 text-white/80">
+            <div class="size-5 text-primary opacity-80">
+                <svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z">
+                    </path>
+                </svg>
+            </div>
+            <span class="text-sm font-medium">© 2023 NeuroProsthetics Inc.</span>
+        </div>
+        <div class="flex gap-6">
+            <a aria-label="Twitter" class="text-text-muted hover:text-white transition-colors" href="#">
+                <svg class="size-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                    </path>
+                </svg>
+            </a>
+            <a aria-label="LinkedIn" class="text-text-muted hover:text-white transition-colors" href="#">
+                <svg class="size-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                    </path>
+                </svg>
+            </a>
+            <a aria-label="GitHub" class="text-text-muted hover:text-white transition-colors" href="#">
+                <svg class="size-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
+<!-- Floating Chat Widget Button -->
+<button
+    class="fixed bottom-6 right-6 z-50 flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-2xl hover:scale-110 transition-transform focus:outline-none focus:ring-4 focus:ring-primary/50 group">
+    <span class="material-symbols-outlined text-2xl group-hover:hidden">chat</span>
+    <span class="material-symbols-outlined text-2xl hidden group-hover:block">close</span>
+    <!-- Ripple effect -->
+    <span class="absolute inline-flex h-full w-full rounded-full bg-primary opacity-20 animate-ping"></span>
+</button>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+    checkAuth();
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; History Dashboard - NeuroProsthetics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1132d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "card-dark": "#1a1e35",
+                        "border-dark": "#323b67",
+                        "success": "#0bda65",
+                        "warning": "#f59e0b",
+                        "danger": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Glassmorphism Utilities */
+        .glass-card {
+            background: rgba(26, 30, 53, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(50, 59, 103, 0.5);
+        }
+        
+        .glass-panel {
+            background: rgba(17, 20, 34, 0.8);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Chart Animations */
+        @keyframes flow {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        .animate-draw {
+            stroke-dasharray: 1000;
+            animation: flow 5s linear infinite;
+        }
+
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 glass-panel border-b border-border-dark w-full">
+<div class="px-6 lg:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-4xl">neurology</span>
+</div>
+<div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">NeuroProsthetics Interface</h2>
+<p class="text-xs text-slate-400 font-medium">Clinician Dashboard v2.4</p>
+</div>
+</div>
+<div class="hidden lg:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-6">
+<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">Live Control</a>
+<a class="text-white text-sm font-medium border-b-2 border-primary py-1" href="#">Reports &amp; History</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">Settings</a>
+</nav>
+<div class="h-6 w-px bg-border-dark"></div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg size-9 hover:bg-white/10 text-white transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-9 hover:bg-white/10 text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-2 border-l border-border-dark border-opacity-50">
+<div class="text-right hidden xl:block">
+<p class="text-sm font-semibold text-white">Dr. Sarah Chen</p>
+<p class="text-xs text-slate-400">Chief Neurologist</p>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-border-dark" data-alt="Profile picture of a female doctor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4DNe7HIppqCWN6BDfh5iSeX7zzC_UWuGXfGEHnrkEEpS9uMrjzn0aeDw73QVeLL4zPwbYw6cSiYnqAUb0ikBaF6hRhoCUBp9dAOV3ZKAcLW1q5HERUWk3K__69s9NV8tZjvnwaHLGt9y8QzUAuDJma52e9mQwx9EOpSTNCYvskEUr6FaIg9SDN0toix3IU8JpBSVuNJgmpJ9TZpXP7l59HN7raiKXGLGZPYocqRIuo847hOpZYgQTJg8WRCZiwT8W0oyaUa37gtUz");'></div>
+</div>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="lg:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full px-4 md:px-8 lg:px-12 py-8 max-w-[1600px] mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-6 text-sm">
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">home</span> Home
+            </a>
+<span class="text-slate-600">/</span>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">Patients</a>
+<span class="text-slate-600">/</span>
+<span class="text-white font-medium">Reports &amp; History</span>
+</div>
+<!-- Page Header -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-10">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<h1 class="text-white text-3xl md:text-4xl font-black tracking-tight">Patient Report</h1>
+<span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs font-bold rounded-full border border-green-500/20">Active Treatment</span>
+</div>
+<div class="flex items-center gap-4 text-slate-400 text-sm md:text-base">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg">person</span> Alex Mercer (ID: #8821X)</span>
+<span class="size-1 rounded-full bg-slate-600"></span>
+<span>Prosthetic: Model X-9 (Right Arm)</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="glass-card rounded-lg flex items-center px-3 h-10 gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">calendar_month</span>
+<select class="bg-transparent text-sm text-white font-medium focus:outline-none cursor-pointer border-none p-0">
+<option class="bg-card-dark">Last 30 Days</option>
+<option class="bg-card-dark">Last 7 Days</option>
+<option class="bg-card-dark">This Year</option>
+</select>
+</div>
+<button class="flex items-center justify-center gap-2 h-10 px-5 bg-primary hover:bg-blue-700 text-white text-sm font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(17,50,212,0.3)]">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Download Medical Report (PDF)</span>
+</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<!-- Stat 1 -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-white">timer</span>
+</div>
+<p class="text-slate-400 text-sm font-medium mb-1">Total Sessions</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-3xl font-bold text-white">42</h3>
+<span class="text-success text-xs font-bold bg-success/10 px-1.5 py-0.5 rounded flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> 12%
+                    </span>
+</div>
+<div class="w-full bg-white/5 h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-white">show_chart</span>
+</div>
+<p class="text-slate-400 text-sm font-medium mb-1">Avg. EEG Signal</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-3xl font-bold text-white">88<span class="text-lg font-normal text-slate-500">µV</span></h3>
+<span class="text-success text-xs font-bold bg-success/10 px-1.5 py-0.5 rounded flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> 5%
+                    </span>
+</div>
+<!-- Sparkline SVG -->
+<svg class="w-full h-8 mt-2 text-primary/60" fill="none" preserveaspectratio="none" viewbox="0 0 100 20">
+<path d="M0 10 L10 12 L20 8 L30 15 L40 5 L50 12 L60 9 L70 14 L80 6 L90 11 L100 10" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<!-- Stat 3 -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-white">schedule</span>
+</div>
+<p class="text-slate-400 text-sm font-medium mb-1">Total Usage Time</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-3xl font-bold text-white">126<span class="text-lg font-normal text-slate-500">h</span> 40<span class="text-lg font-normal text-slate-500">m</span></h3>
+</div>
+<p class="text-xs text-slate-500 mt-3">+2.5 hrs vs last week</p>
+</div>
+<!-- Stat 4 -->
+<div class="glass-card rounded-xl p-5 relative overflow-hidden group border-l-4 border-l-primary">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-white">psychology</span>
+</div>
+<p class="text-slate-400 text-sm font-medium mb-1">AI Model Accuracy</p>
+<div class="flex items-center justify-between mt-1">
+<h3 class="text-3xl font-bold text-white">98.2%</h3>
+<div class="size-10 rounded-full border-4 border-slate-700 border-t-primary flex items-center justify-center transform -rotate-45"></div>
+</div>
+<p class="text-xs text-slate-500 mt-3">Calibration Status: <span class="text-success">Optimal</span></p>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Main Chart: EEG History -->
+<div class="glass-card rounded-xl p-6 lg:col-span-2 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-lg font-bold text-white mb-1">EEG Calibration History</h3>
+<p class="text-sm text-slate-400">Alpha/Beta Wave Stability Analysis</p>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-xs text-slate-400"><span class="size-2 rounded-full bg-primary"></span> Alpha</span>
+<span class="flex items-center gap-1 text-xs text-slate-400"><span class="size-2 rounded-full bg-cyan-400"></span> Beta</span>
+</div>
+</div>
+<div class="flex-grow relative min-h-[250px] w-full">
+<!-- Grid Lines Background -->
+<div class="absolute inset-0 grid grid-rows-4 w-full h-full pointer-events-none">
+<div class="border-b border-slate-700/30 w-full"></div>
+<div class="border-b border-slate-700/30 w-full"></div>
+<div class="border-b border-slate-700/30 w-full"></div>
+<div class="border-b border-slate-700/30 w-full"></div>
+</div>
+<!-- Chart SVG -->
+<svg class="absolute inset-0 w-full h-full overflow-visible" preserveaspectratio="none">
+<defs>
+<lineargradient id="gradientAlpha" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#1132d4;stop-opacity:0.4"></stop>
+<stop offset="100%" style="stop-color:#1132d4;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<!-- Area Fill -->
+<path class="w-full h-full" d="M0,150 Q50,100 100,120 T200,80 T300,130 T400,60 T500,100 T600,40 T700,90 T800,50 L800,250 L0,250 Z" fill="url(#gradientAlpha)" style="transform: scaleY(0.8) translateY(20%); transform-origin: bottom;"></path>
+<!-- Line 1 (Alpha) -->
+<path d="M0,150 Q50,100 100,120 T200,80 T300,130 T400,60 T500,100 T600,40 T700,90 T800,50" fill="none" stroke="#1132d4" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+<!-- Line 2 (Beta) -->
+<path d="M0,180 Q60,160 120,190 T240,140 T360,170 T480,110 T600,150 T720,100 T800,120" fill="none" stroke="#22d3ee" stroke-dasharray="4,4" stroke-linecap="round" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Secondary Chart: Usage Frequency -->
+<div class="glass-card rounded-xl p-6 flex flex-col">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-white mb-1">Activation Frequency</h3>
+<p class="text-sm text-slate-400">Daily prosthetic motor engagements</p>
+</div>
+<div class="flex-grow flex items-end justify-between gap-2 min-h-[200px] px-2">
+<!-- Bar 1 -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">24</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[30%]"></div>
+</div>
+<span class="text-xs text-slate-500 font-bold">M</span>
+</div>
+<!-- Bar 2 -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">45</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[55%]"></div>
+</div>
+<span class="text-xs text-slate-500 font-bold">T</span>
+</div>
+<!-- Bar 3 -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">68</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[85%]"></div>
+</div>
+<span class="text-xs text-slate-500 font-bold">W</span>
+</div>
+<!-- Bar 4 (Peak) -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">82</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-gradient-to-t from-primary to-cyan-400 h-[100%] shadow-[0_0_15px_rgba(34,211,238,0.4)]"></div>
+</div>
+<span class="text-xs text-white font-bold">T</span>
+</div>
+<!-- Bar 5 -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">50</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[60%]"></div>
+</div>
+<span class="text-xs text-slate-500 font-bold">F</span>
+</div>
+<!-- Bar 6 -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">32</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[40%]"></div>
+</div>
+<span class="text-xs text-slate-500 font-bold">S</span>
+</div>
+<!-- Bar 7 -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity mb-1">15</div>
+<div class="w-full bg-slate-700/50 rounded-t-sm relative h-32 group-hover:bg-slate-700 transition-colors overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary h-[20%]"></div>
+</div>
+<span class="text-xs text-slate-500 font-bold">S</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Session Log Table -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col">
+<div class="p-6 border-b border-border-dark flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h3 class="text-lg font-bold text-white">Recent Session Logs</h3>
+<p class="text-sm text-slate-400">Detailed breakdown of prosthetic interaction events</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-xs font-medium text-white bg-white/5 hover:bg-white/10 rounded border border-white/10 transition-colors">Export CSV</button>
+<button class="px-3 py-1.5 text-xs font-medium text-white bg-white/5 hover:bg-white/10 rounded border border-white/10 transition-colors">Filter</button>
+</div>
+</div>
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left text-sm whitespace-nowrap">
+<thead class="bg-white/5 text-slate-400">
+<tr>
+<th class="px-6 py-4 font-semibold">Timestamp</th>
+<th class="px-6 py-4 font-semibold">Activity Type</th>
+<th class="px-6 py-4 font-semibold">Neural Latency</th>
+<th class="px-6 py-4 font-semibold">Signal Quality</th>
+<th class="px-6 py-4 font-semibold">Status</th>
+<th class="px-6 py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark/50">
+<!-- Row 1 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-6 py-4 text-white font-mono">Oct 24, 09:42 AM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="p-1.5 rounded bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-lg">pan_tool</span>
+</div>
+<span class="text-white font-medium">Grip Training</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">45ms</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-success h-full w-[95%]"></div>
+</div>
+<span class="text-xs text-success font-bold">95%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 flex w-fit items-center gap-1">
+<span class="size-1.5 rounded-full bg-success animate-pulse"></span> Optimal
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-6 py-4 text-white font-mono">Oct 24, 08:15 AM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="p-1.5 rounded bg-purple-500/20 text-purple-400">
+<span class="material-symbols-outlined text-lg">rotate_right</span>
+</div>
+<span class="text-white font-medium">Wrist Rotation</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">52ms</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-success h-full w-[88%]"></div>
+</div>
+<span class="text-xs text-success font-bold">88%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 flex w-fit items-center gap-1">
+<span class="size-1.5 rounded-full bg-success"></span> Success
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3: Warning -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-6 py-4 text-white font-mono">Oct 23, 16:30 PM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="p-1.5 rounded bg-orange-500/20 text-orange-400">
+<span class="material-symbols-outlined text-lg">back_hand</span>
+</div>
+<span class="text-white font-medium">Finger Flexion</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">112ms</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-warning h-full w-[60%]"></div>
+</div>
+<span class="text-xs text-warning font-bold">60%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20 flex w-fit items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> Calibration
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-6 py-4 text-white font-mono">Oct 23, 14:10 PM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="p-1.5 rounded bg-cyan-500/20 text-cyan-400">
+<span class="material-symbols-outlined text-lg">pinch</span>
+</div>
+<span class="text-white font-medium">Precision Pinch</span>
+</div>
+</td>
+<td class="px-6 py-4 text-slate-300">41ms</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-20 bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-success h-full w-[98%]"></div>
+</div>
+<span class="text-xs text-success font-bold">98%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 flex w-fit items-center gap-1">
+<span class="size-1.5 rounded-full bg-success"></span> Success
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-border-dark flex justify-center">
+<button class="text-primary text-sm font-semibold hover:text-white transition-colors">View All Session Logs</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark mt-auto bg-background-dark py-6">
+<div class="px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+<p>© 2023 NeuroProsthetics Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-white transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script src="../assets/js/app.js"></script>
+<script>
+    checkAuth();
+</script>
+
+</body></html>

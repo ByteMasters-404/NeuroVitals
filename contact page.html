@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - NeuroProsthetics</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1625f3",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101122",
+                        "card-dark": "#181a34",
+                        "border-dark": "#313568",
+                        "text-muted": "#9094cb",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101122;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #313568;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1625f3;
+        }
+        .glass-panel {
+            background: rgba(24, 26, 52, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(49, 53, 104, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden antialiased selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen flex-col">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-[#101223]/90 backdrop-blur-md px-6 py-4 lg:px-10">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">NeuroProsthetics</h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-8">
+<a class="text-text-muted hover:text-white transition-colors text-sm font-medium" href="#">Home</a>
+<a class="text-text-muted hover:text-white transition-colors text-sm font-medium" href="#">Technology</a>
+<a class="text-text-muted hover:text-white transition-colors text-sm font-medium" href="#">Research</a>
+<a class="text-white text-sm font-medium" href="#">Contact</a>
+</nav>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-6 bg-primary hover:bg-blue-700 transition-colors text-white text-sm font-bold tracking-wide shadow-[0_0_20px_rgba(22,37,243,0.3)]">
+<span>Patient Portal</span>
+</button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="lg:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Header -->
+<div class="relative px-6 py-12 lg:px-20 lg:py-20 flex flex-col items-center text-center">
+<!-- Background decorative element -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+<h1 class="relative z-10 text-4xl lg:text-6xl font-black tracking-tight mb-4">
+                    Connect with the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-primary">Future</span>
+</h1>
+<p class="relative z-10 text-text-muted text-lg max-w-2xl">
+                    Whether you are a patient looking for advanced mobility solutions, a researcher seeking collaboration, or an investor, our team is ready to listen.
+                </p>
+</div>
+<div class="layout-container flex justify-center px-4 pb-20 lg:px-10">
+<div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Contact Form -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="glass-panel p-6 lg:p-10 rounded-2xl relative overflow-hidden group">
+<!-- Decorative gradient border effect -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+                                Send us a Message
+                            </h2>
+<form class="flex flex-col gap-5 relative z-10">
+<div class="flex flex-col sm:flex-row gap-5">
+<label class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium pb-2">First Name</span>
+<input class="form-input w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Jane" type="text"/>
+</label>
+<label class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium pb-2">Last Name</span>
+<input class="form-input w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Doe" type="text"/>
+</label>
+</div>
+<div class="flex flex-col sm:flex-row gap-5">
+<label class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium pb-2">Email Address</span>
+<input class="form-input w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="jane@example.com" type="email"/>
+</label>
+<label class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium pb-2">Subject</span>
+<div class="relative">
+<select class="form-select w-full rounded-xl border border-border-dark bg-background-dark/50 h-12 px-4 text-white focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer">
+<option>General Inquiry</option>
+<option>Patient Support</option>
+<option>Research Partnership</option>
+<option>Investor Relations</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-3 pointer-events-none text-text-muted">expand_more</span>
+</div>
+</label>
+</div>
+<label class="flex flex-col">
+<span class="text-white text-sm font-medium pb-2">Message</span>
+<textarea class="form-textarea w-full rounded-xl border border-border-dark bg-background-dark/50 min-h-[160px] p-4 text-white placeholder:text-text-muted focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="How can we help you today?"></textarea>
+</label>
+<div class="pt-2">
+<button class="group flex items-center justify-center gap-2 w-full sm:w-auto h-12 px-8 bg-primary hover:bg-blue-600 rounded-xl text-white font-bold transition-all shadow-lg hover:shadow-blue-900/40" type="button">
+<span>Send Message</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Info & Map -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Contact Info Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+<!-- Support Card -->
+<div class="glass-panel p-5 rounded-xl flex items-start gap-4 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base">Support Team</h3>
+<p class="text-text-muted text-sm mt-1">For immediate assistance regarding your device.</p>
+<a class="text-primary text-sm font-medium mt-2 inline-block hover:underline" href="mailto:support@bci-project.com">support@bci-project.com</a>
+</div>
+</div>
+<!-- Partnerships Card -->
+<div class="glass-panel p-5 rounded-xl flex items-start gap-4 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">handshake</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-base">Partnerships</h3>
+<p class="text-text-muted text-sm mt-1">Collaboration opportunities for labs and clinics.</p>
+<a class="text-primary text-sm font-medium mt-2 inline-block hover:underline" href="mailto:partners@bci-project.com">partners@bci-project.com</a>
+</div>
+</div>
+</div>
+<!-- Map Section -->
+<div class="glass-panel rounded-2xl overflow-hidden flex flex-col h-full min-h-[300px]">
+<div class="p-5 border-b border-border-dark flex justify-between items-center">
+<div>
+<h3 class="text-white font-bold text-base flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                                        Research Lab HQ
+                                    </h3>
+<p class="text-text-muted text-sm">1200 Innovation Dr, Tech Park, CA</p>
+</div>
+<button class="text-xs font-medium bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg text-white transition-colors border border-white/10">
+                                    Get Directions
+                                </button>
+</div>
+<!-- Simulated Map -->
+<div class="relative flex-1 w-full bg-[#0c0e1e] group overflow-hidden">
+<!-- Map Background Image -->
+<div class="absolute inset-0 bg-cover bg-center opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="Dark stylized map of San Francisco showing streets and blocks in a futuristic grid pattern" data-location="San Francisco" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGDb5ccOwGkEY1-Z6rP2O8vWHobfKe5gmXrTZ3Q9ipx1Yg2EVfKunD-AyLO_LoLtFS4Rqrty_pgIvgexGE4QIaooFZWBlHuE5U2_d65Jx83zh-aG5bmpKjSfrtVUK53bblD3q1dnYlxyHiYAizSkKNIjN_x7_Hhdg74bUFOcVGd7Htl37FgpOyxJEllWphHzJUjiOjAcBX1kZODC1Mezfsl9PIwKUqBhlxHN2-X764ncywGs72L7wQfIb5gzwi1Kc3f4lQFgIVEGV2');">
+</div>
+<!-- Map Overlay Gradient -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#101122] via-transparent to-transparent"></div>
+<!-- Animated Pin -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group-hover:-translate-y-[calc(50%+5px)] transition-transform duration-300">
+<div class="relative">
+<div class="size-4 bg-primary rounded-full relative z-10 shadow-[0_0_15px_#1625f3]"></div>
+<div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-75"></div>
+</div>
+<div class="mt-2 bg-background-dark px-3 py-1 rounded-md border border-border-dark shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+<span class="text-xs font-bold text-white whitespace-nowrap">NeuroProsthetics Lab</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Teaser / Footer Action -->
+<div class="border-t border-border-dark bg-[#0a0b16]">
+<div class="layout-container px-6 py-10 lg:px-20 text-center">
+<h3 class="text-white text-xl font-bold mb-4">Common Questions</h3>
+<div class="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
+<a class="hover:text-primary transition-colors" href="#">How does the BCI technology work?</a>
+<span class="text-border-dark">•</span>
+<a class="hover:text-primary transition-colors" href="#">Is the procedure invasive?</a>
+<span class="text-border-dark">•</span>
+<a class="hover:text-primary transition-colors" href="#">Insurance coverage options</a>
+<span class="text-border-dark">•</span>
+<a class="hover:text-primary transition-colors" href="#">Clinical trial applications</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-background-dark py-8">
+<div class="layout-container px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2 text-white/80">
+<div class="size-5 text-primary opacity-80">
+<svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"></path></svg>
+</div>
+<span class="text-sm font-medium">© 2023 NeuroProsthetics Inc.</span>
+</div>
+<div class="flex gap-6">
+<a aria-label="Twitter" class="text-text-muted hover:text-white transition-colors" href="#">
+<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a aria-label="LinkedIn" class="text-text-muted hover:text-white transition-colors" href="#">
+<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a aria-label="GitHub" class="text-text-muted hover:text-white transition-colors" href="#">
+<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<!-- Floating Chat Widget Button -->
+<button class="fixed bottom-6 right-6 z-50 flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-2xl hover:scale-110 transition-transform focus:outline-none focus:ring-4 focus:ring-primary/50 group">
+<span class="material-symbols-outlined text-2xl group-hover:hidden">chat</span>
+<span class="material-symbols-outlined text-2xl hidden group-hover:block">close</span>
+<!-- Ripple effect -->
+<span class="absolute inline-flex h-full w-full rounded-full bg-primary opacity-20 animate-ping"></span>
+</button>
+</div>
+<script src="../assets/js/app.js"></script>
+<script>
+    checkAuth();
+</script>
+
+</body></html>
