@@ -1,14 +1,10 @@
-<script>
-if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "../authentication_page/code.html";
-}
-</script>
+
 <!DOCTYPE html>
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NeuroVitals-Dashboard</title>
+<title>NeuroLink BCI Dashboard</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -91,7 +87,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <div class="flex flex-col gap-6">
 <!-- Branding -->
 <div class="flex flex-col px-2">
-<h1 class="text-white text-2xl font-bold leading-normal tracking-wide">NeuroVitals<span class="text-primary"></span></h1>
+<h1 class="text-white text-2xl font-bold leading-normal tracking-wide">NeuroLink<span class="text-primary">.ai</span></h1>
 <p class="text-text-secondary text-xs font-normal leading-normal tracking-wider">BCI CONTROL CENTER v2.4</p>
 </div>
 <!-- Nav Items -->
@@ -120,11 +116,16 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 </div>
 <!-- Bottom Actions -->
 <div class="flex flex-col gap-2">
-<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors" href="index.html">
 <span class="material-symbols-outlined">logout</span>
 <p class="text-sm font-medium leading-normal">Logout</p>
 </a>
+<div class="px-3 py-3 rounded-xl bg-[#101223] mt-2">
+<div class="flex items-center gap-3">
 
+<div class="flex flex-col">
+
+</div>
 </div>
 </div>
 </div>
@@ -144,11 +145,23 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 </div>
 <div class="flex items-center gap-4 md:gap-6">
 <!-- Segmented Role Switcher (Hidden on mobile for space) -->
-
+<div class="hidden md:flex h-9 items-center justify-center rounded-lg bg-[#222549] p-1">
+<label class="cursor-pointer px-3 py-1 rounded-md text-text-secondary text-xs font-medium hover:text-white transition-colors">
+<span>Admin</span>
+<input class="hidden" name="role" type="radio" value="Admin"/>
+</label>
+<label class="cursor-pointer px-3 py-1 rounded-md bg-[#101223] shadow-sm text-white text-xs font-medium">
+<span>Doctor</span>
+<input checked="" class="hidden" name="role" type="radio" value="Doctor"/>
+</label>
+<label class="cursor-pointer px-3 py-1 rounded-md text-text-secondary text-xs font-medium hover:text-white transition-colors">
+<span>Patient</span>
+<input class="hidden" name="role" type="radio" value="Patient"/>
+</label>
+</div>
 <div class="flex gap-2">
-
 <button class="flex items-center justify-center rounded-lg w-9 h-9 hover:bg-[#222549] text-text-secondary hover:text-white transition-colors">
-
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
 </button>
 </div>
 <div class="bg-center bg-no-repeat bg-cover rounded-full h-9 w-9 border border-[#222549]" data-alt="Profile picture of a doctor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuS4zsq_nEwz7TikfgsEMF9Sx_Z-grFTE_0qHm997Gj1FXP6qa0t-b76ZRM4Dj7BOQfTJMSuCfKWOFNLjgo3yMJ7Ktk7YpErbXsmUPwjsFeO8Q5Ez-4fcp078plpblb1sGHZvH7-rx79fygPHNUk36s0hvmBL-wI4W6LTG239zfNN9N_cFZH1sN8kxwrsCX3HMqaePAPNYt55tqqyMBdpXDFWU240poQWqiSCg2FpxmEAlmZr5hLPoYxL0fsVCEol8abamMF2BBhk-");'></div>
@@ -373,7 +386,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <button class="text-primary text-sm font-medium hover:underline">View Full Log</button>
 </div>
 <div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
+<table class="w-[800px] text-left border-collapse">
 <thead>
 <tr class="bg-[#101223]/50 text-text-secondary text-xs uppercase tracking-wider">
 <th class="px-6 py-3 font-medium">Motor ID</th>
