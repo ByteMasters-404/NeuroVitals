@@ -255,7 +255,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <span class="material-symbols-outlined text-accent-purple">show_chart</span>
                                             EEG Stream
                                         </h3>
-<div class="relative h-[260px] w-[650px]">
+<div class="relative h-[260px] w-[650px] chart-grid">
   <canvas
     id="eegCanvas"
     class="absolute inset-0 w-full h-full rounded-xl bg-[#0f1023]">
@@ -447,82 +447,144 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 </div>
 
 <script>
-const canvas = document.getElementById("eegCanvas");
-canvas.width = canvas.parentElement.clientWidth;
-canvas.height = 260;
+/* ================= REAL EEG PARAMETERS ================= */
+const SAMPLE_RATE = 256;       // Hz (real EEG)
+const WINDOW_SEC = 3;          // seconds on screen
+const MAX_POINTS = SAMPLE_RATE * WINDOW_SEC;
+
+let time = 0;
+
+/* Ring buffers */
+const ch1 = [];
+const ch2 = [];
+const ch3 = [];
+
+/* ================= EEG SIGNAL MODEL ================= */
+function eegSignal(freq, amp) {
+  return amp * Math.sin(2 * Math.PI * freq * time);
+}
+
+function generateEEGSample() {
+  time += 1 / SAMPLE_RATE;
+
+  // Brain waves
+  const delta = eegSignal(2, 12);
+  const theta = eegSignal(6, 10);
+  const alpha = eegSignal(10, 18);
+  const beta  = eegSignal(22, 8);
+
+  // Noise + spike
+  const noise = (Math.random() - 0.5) * 6;
+  const spike = Math.random() < 0.01 ? (Math.random() * 80 - 40) : 0;
+
+  return delta + theta + alpha + beta + noise + spike;
+}
+</script>
+
+
+<script>
+const ctx = document.getElementById("eegCanvas").getContext("2d");
+
+const eegChart = new Chart(ctx, {
+  type: "line",
+  data: {
+    datasets: [
+      {
+        label: "Channel 1",
+        data: ch1,
+        borderColor: "#00f0ff",
+        borderWidth: 1,
+        pointRadius: 0
+      },
+      {
+        label: "Channel 2",
+        data: ch2,
+        borderColor: "#bf00ff",
+        borderWidth: 1,
+        pointRadius: 0
+      },
+      {
+        label: "Channel 3",
+        data: ch3,
+        borderColor: "#222549",
+        borderDash: [6,4],
+        borderWidth: 1,
+        pointRadius: 0
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: false,
+    plugins: { legend: false },
+    scales: {
+      x: {
+        type: "linear",
+        min: 0,
+        max: MAX_POINTS,
+        display: false
+      },
+      y: {
+        min: -100,
+        max: 100,
+        display: false
+      }
+    }
+  }
+});
 </script>
 
 <script>
-const eegCtx = document.getElementById("eegCanvas").getContext("2d");
+function updateEEG() {
+  const sample = generateEEGSample();
 
-/* Gradient (matches your neon styling) */
-const eegGradient = eegCtx.createLinearGradient(0, 0, eegCtx.canvas.width, 0);
-eegGradient.addColorStop(0, "rgba(22,37,243,0)");
-eegGradient.addColorStop(0.25, "#00f0ff");
-eegGradient.addColorStop(0.75, "#bf00ff");
-eegGradient.addColorStop(1, "rgba(191,0,255,0)");
+  ch1.push({ x: ch1.length, y: sample });
+  ch2.push({ x: ch2.length, y: sample * 0.85 });
+  ch3.push({ x: ch3.length, y: sample * 0.6 });
 
-/* Buffer */
-const BUFFER_SIZE = 120;
-const eegData = Array(BUFFER_SIZE).fill(0);
+  if (ch1.length > MAX_POINTS) {
+    ch1.shift();
+    ch2.shift();
+    ch3.shift();
+  }
 
-/* Chart.js EEG */
-const eegChart = new Chart(eegCtx, {
-    type: "line",
-    data: {
-        labels: Array.from({ length: BUFFER_SIZE }, (_, i) => i),
-        datasets: [{
-            data: eegData,
-            borderColor: eegGradient,
-            borderWidth: 3,
-            tension: 0.45,
-            pointRadius: 0
-        }]
-    },
-    options: {    responsive: false,   // 🔥 THIS IS THE KEY FIX
-    maintainAspectRatio: false,
-    animation: false,
-        plugins: {
-            legend: { display: false }
-        },
-        scales: {
-            x: { display: false },
-            y: {
-                display: false,
-                min: -60,
-                max: 60
-            }
-        }
-    }
-});
+  // Shift X-axis to simulate left movement
+  ch1.forEach((p, i) => p.x = i);
+  ch2.forEach((p, i) => p.x = i);
+  ch3.forEach((p, i) => p.x = i);
 
-/* EEG signal generator */
-function eeg(freq, amp) {
-    return amp * Math.sin(Date.now() / freq) + (Math.random() - 0.5) * 8;
+  eegChart.update("none");
 }
 
-/* Live EEG loop */
-setInterval(() => {
-    eegChart.data.datasets[0].data.shift();
-
-    const alpha = eeg(70, 20);
-    const beta  = eeg(35, 14);
-    const theta = eeg(110, 10);
-    const delta = eeg(180, 6);
-
-    eegChart.data.datasets[0].data.push(
-        alpha + beta + theta + delta
-    );
-	
-    eegChart.update("none");
-
-    document.getElementById("alphaVal").innerText = Math.abs(alpha).toFixed(1) + " uV";
-    document.getElementById("betaVal").innerText  = Math.abs(beta).toFixed(1)  + " uV";
-    document.getElementById("thetaVal").innerText = Math.abs(theta).toFixed(1) + " uV";
-    document.getElementById("deltaVal").innerText = Math.abs(delta).toFixed(1) + " uV";
-
-}, 40); // ~25 FPS (EEG-like)
+/* 256 Hz sampling */
+setInterval(updateEEG, 1000 / SAMPLE_RATE);
 </script>
 
+<script>
+function computeBands(signal) {
+  const bands = { delta:0, theta:0, alpha:0, beta:0 };
+
+  for (let i = 0; i < signal.length; i++) {
+    const f = i * SAMPLE_RATE / signal.length;
+    const v = Math.abs(signal[i].y || 0);
+
+    if (f < 4) bands.delta += v;
+    else if (f < 8) bands.theta += v;
+    else if (f < 13) bands.alpha += v;
+    else if (f < 30) bands.beta += v;
+  }
+  return bands;
+}
+
+setInterval(() => {
+  const b = computeBands(ch1);
+
+  document.getElementById("deltaVal").innerText = (b.delta/50).toFixed(1) + " uV";
+  document.getElementById("thetaVal").innerText = (b.theta/50).toFixed(1) + " uV";
+  document.getElementById("alphaVal").innerText = (b.alpha/50).toFixed(1) + " uV";
+  document.getElementById("betaVal").innerText  = (b.beta/50).toFixed(1) + " uV";
+}, 500);
+</script>
 
 </body></html>
