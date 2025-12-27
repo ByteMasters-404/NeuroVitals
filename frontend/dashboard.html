@@ -1,8 +1,4 @@
-<script>
-if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "../authentication_page/code.html";
-}
-</script>
+
 <!DOCTYPE html>
 
 <html class="dark" lang="en"><head>
@@ -17,6 +13,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Theme Configuration -->
 <script id="tailwind-config">
         tailwind.config = {
@@ -245,7 +242,8 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <div class="col-span-12 lg:col-span-7 flex flex-col gap-6 min-h-0">
 
 <!-- EEG Waveform -->
-<div class="bg-card-dark rounded-xl shadow-lg border border-[#222549] p-5 relative overflow-hidden group flex-1 min-h-0">
+<div class="bg-card-dark rounded-xl shadow-lg border border-[#222549] p-5 relative overflow-hidden group h-[600px] flex flex-col">
+
 
 <div class="flex justify-between items-start mb-4 relative z-10">
 <div>
@@ -253,9 +251,13 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <span class="material-symbols-outlined text-accent-purple">show_chart</span>
                                             EEG Stream
                                         </h3>
-<canvas id="eegCanvas"
-        class="w-full rounded-xl bg-[#0f1023]"
-        height="260"></canvas>
+<div class="relative h-[260px] w-[650px]">
+  <canvas
+    id="eegCanvas"
+    class="absolute inset-0 w-full h-full rounded-xl bg-[#0f1023]">
+  </canvas>
+</div>
+
 
 <div class="grid grid-cols-4 gap-4 mt-4">
     <div class="text-center">
@@ -308,7 +310,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 <path d="M0,110 Q50,120 100,110 T200,100 T300,90 T400,120 T500,110 T600,100 T700,130 T800,100 T900,115 T1000,110" fill="none" stroke="#222549" stroke-dasharray="5,5" stroke-width="2"></path>
 </svg>
 <!-- Small Widget Row -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-xl">
 <!-- AI Confidence -->
 <div class="bg-card-dark rounded-xl border border-[#222549] p-4 flex flex-col items-center justify-center relative">
 <h4 class="text-text-secondary text-xs uppercase font-bold absolute top-4 left-4">AI Confidence</h4>
@@ -439,93 +441,84 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 </main>
 </div>
 </div>
+
 <script>
 const canvas = document.getElementById("eegCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = canvas.offsetWidth;
+canvas.width = canvas.parentElement.clientWidth;
 canvas.height = 260;
-
-const w = canvas.width;
-const h = canvas.height;
-const mid = h / 2;
-
-let t = 0;
-
-// EEG band DOM
-const alphaEl = document.getElementById("alphaVal");
-const betaEl  = document.getElementById("betaVal");
-const thetaEl = document.getElementById("thetaVal");
-const deltaEl = document.getElementById("deltaVal");
-
-// Grid
-function drawGrid() {
-    ctx.strokeStyle = "rgba(255,255,255,0.05)";
-    ctx.lineWidth = 1;
-
-    for (let x = 0; x < w; x += 40) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, h);
-        ctx.stroke();
-    }
-
-    for (let y = 0; y < h; y += 40) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
-        ctx.stroke();
-    }
-}
-
-// Main draw
-function drawEEG() {
-    ctx.clearRect(0, 0, w, h);
-    drawGrid();
-
-    ctx.beginPath();
-    ctx.lineWidth = 3;
-
-    const gradient = ctx.createLinearGradient(0, 0, w, 0);
-    gradient.addColorStop(0, "#22d3ee");
-    gradient.addColorStop(0.5, "#6366f1");
-    gradient.addColorStop(1, "#d946ef");
-
-    ctx.strokeStyle = gradient;
-    ctx.shadowBlur = 20;
-    ctx.shadowColor = "#6366f1";
-
-    let alpha = 0, beta = 0, theta = 0, delta = 0;
-
-    for (let x = 0; x < w; x++) {
-        const a = Math.sin(x * 0.02 + t) * 30;
-        const b = Math.sin(x * 0.05 + t * 1.4) * 20;
-        const th = Math.sin(x * 0.01 + t * 0.8) * 15;
-        const d = Math.sin(x * 0.005 + t * 0.4) * 10;
-
-        const y = mid + a + b + th + d;
-        ctx.lineTo(x, y);
-
-        alpha += Math.abs(a);
-        beta  += Math.abs(b);
-        theta += Math.abs(th);
-        delta += Math.abs(d);
-    }
-
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    // Update values (scaled µV)
-    alphaEl.textContent = (alpha / w).toFixed(1) + " uV";
-    betaEl.textContent  = (beta / w).toFixed(1) + " uV";
-    thetaEl.textContent = (theta / w).toFixed(1) + " uV";
-    deltaEl.textContent = (delta / w).toFixed(1) + " uV";
-
-    t += 0.03;
-    requestAnimationFrame(drawEEG);
-}
-
-drawEEG();
 </script>
+
+<script>
+const eegCtx = document.getElementById("eegCanvas").getContext("2d");
+
+/* Gradient (matches your neon styling) */
+const eegGradient = eegCtx.createLinearGradient(0, 0, eegCtx.canvas.width, 0);
+eegGradient.addColorStop(0, "rgba(22,37,243,0)");
+eegGradient.addColorStop(0.25, "#00f0ff");
+eegGradient.addColorStop(0.75, "#bf00ff");
+eegGradient.addColorStop(1, "rgba(191,0,255,0)");
+
+/* Buffer */
+const BUFFER_SIZE = 120;
+const eegData = Array(BUFFER_SIZE).fill(0);
+
+/* Chart.js EEG */
+const eegChart = new Chart(eegCtx, {
+    type: "line",
+    data: {
+        labels: Array.from({ length: BUFFER_SIZE }, (_, i) => i),
+        datasets: [{
+            data: eegData,
+            borderColor: eegGradient,
+            borderWidth: 3,
+            tension: 0.45,
+            pointRadius: 0
+        }]
+    },
+    options: {    responsive: false,   // 🔥 THIS IS THE KEY FIX
+    maintainAspectRatio: false,
+    animation: false,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            x: { display: false },
+            y: {
+                display: false,
+                min: -60,
+                max: 60
+            }
+        }
+    }
+});
+
+/* EEG signal generator */
+function eeg(freq, amp) {
+    return amp * Math.sin(Date.now() / freq) + (Math.random() - 0.5) * 8;
+}
+
+/* Live EEG loop */
+setInterval(() => {
+    eegChart.data.datasets[0].data.shift();
+
+    const alpha = eeg(70, 20);
+    const beta  = eeg(35, 14);
+    const theta = eeg(110, 10);
+    const delta = eeg(180, 6);
+
+    eegChart.data.datasets[0].data.push(
+        alpha + beta + theta + delta
+    );
+	
+    eegChart.update("none");
+
+    document.getElementById("alphaVal").innerText = Math.abs(alpha).toFixed(1) + " uV";
+    document.getElementById("betaVal").innerText  = Math.abs(beta).toFixed(1)  + " uV";
+    document.getElementById("thetaVal").innerText = Math.abs(theta).toFixed(1) + " uV";
+    document.getElementById("deltaVal").innerText = Math.abs(delta).toFixed(1) + " uV";
+
+}, 40); // ~25 FPS (EEG-like)
+</script>
+
 
 </body></html>
