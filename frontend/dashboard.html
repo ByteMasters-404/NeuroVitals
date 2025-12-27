@@ -150,27 +150,11 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 </div>
 <div class="flex items-center gap-4 md:gap-6">
 <!-- Segmented Role Switcher (Hidden on mobile for space) -->
-<div class="hidden md:flex h-9 items-center justify-center rounded-lg bg-[#222549] p-1">
-<label class="cursor-pointer px-3 py-1 rounded-md text-text-secondary text-xs font-medium hover:text-white transition-colors">
-<span>Admin</span>
-<input class="hidden" name="role" type="radio" value="Admin"/>
-</label>
-<label class="cursor-pointer px-3 py-1 rounded-md bg-[#101223] shadow-sm text-white text-xs font-medium">
-<span>Doctor</span>
-<input checked="" class="hidden" name="role" type="radio" value="Doctor"/>
-</label>
-<label class="cursor-pointer px-3 py-1 rounded-md text-text-secondary text-xs font-medium hover:text-white transition-colors">
-<span>Patient</span>
-<input class="hidden" name="role" type="radio" value="Patient"/>
-</label>
-</div>
+
 <div class="flex gap-2">
-<button class="flex items-center justify-center rounded-lg w-9 h-9 hover:bg-[#222549] text-text-secondary hover:text-white transition-colors relative">
-<span class="material-symbols-outlined text-[20px]">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-[#101223]"></span>
-</button>
+
 <button class="flex items-center justify-center rounded-lg w-9 h-9 hover:bg-[#222549] text-text-secondary hover:text-white transition-colors">
-<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+
 </button>
 </div>
 <div class="bg-center bg-no-repeat bg-cover rounded-full h-9 w-9 border border-[#222549]" data-alt="Profile picture of a doctor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuS4zsq_nEwz7TikfgsEMF9Sx_Z-grFTE_0qHm997Gj1FXP6qa0t-b76ZRM4Dj7BOQfTJMSuCfKWOFNLjgo3yMJ7Ktk7YpErbXsmUPwjsFeO8Q5Ez-4fcp078plpblb1sGHZvH7-rx79fygPHNUk36s0hvmBL-wI4W6LTG239zfNN9N_cFZH1sN8kxwrsCX3HMqaePAPNYt55tqqyMBdpXDFWU240poQWqiSCg2FpxmEAlmZr5hLPoYxL0fsVCEol8abamMF2BBhk-");'></div>
