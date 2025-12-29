@@ -71,56 +71,41 @@
 </div>
 <h1 class="text-white text-lg font-bold tracking-tight">NeuroLink BCI</h1>
 </div>
-<!-- Navigation Links -->
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Dashboard</a>
-<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Device Control</a>
-<a class="text-white text-sm font-medium border-b-2 border-primary h-16 flex items-center" href="#">Profile</a>
-<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">Analytics</a>
-</nav>
+
 <!-- Actions -->
 <div class="flex items-center gap-4">
 <button class="hidden sm:flex items-center gap-2 bg-surface-light hover:bg-surface-light/80 border border-border-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-all group">
 <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
 <span>Connected</span>
 </button>
-<div class="relative cursor-pointer group">
-<div class="w-10 h-10 rounded-full bg-cover bg-center border-2 border-border-dark group-hover:border-primary transition-colors" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwZIhIE066GvfyMi7ZtMjUiHxSlodogVr67Hm4Cub6XLgOJmRpSw6mkGY4rj0_2BPwqvE4gjgKxKkk94zICSH_t-ezZKmym9kS9W8GQimatM0-vrYlDZ8Cf8w_FNebYUrNKd0CdXjBnWtxzW2BH6A1DyAJryI2NTn_-Djlv4L3q4hhVGI7Tfd2dDvHIOh13UIE9QwhRyiZ0RqOe3rWau-5bzA_c6owxK0-GNn1ZgtTc6aSehg8D_qaxKtP1KnBiypUFrmYFkqSFkt6");'></div>
-<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#101122] rounded-full"></div>
-</div>
+
 </div>
 </div>
 </div>
 </header>
-<!-- Main Content -->
-<main class="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
 <!-- Breadcrumbs -->
+<main class="flex-grow flex flex-col items-center w-full px-4 sm:px-6 lg:px-8 py-8">
 <div class="flex items-center gap-2 text-sm text-slate-400 mb-6">
-<a class="hover:text-primary transition-colors" href="#">Home</a>
-<span class="material-symbols-outlined text-[16px]">chevron_right</span>
-<span class="text-white font-medium">User Profile</span>
+
 </div>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-8 py-8">
+
+
 <!-- Page Title -->
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
 <div>
 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">User Profile</h2>
 <p class="text-slate-400">Manage your personal information and connected prosthetic settings.</p>
 </div>
-<div class="flex gap-3">
-<button class="flex items-center gap-2 px-4 py-2 bg-surface-light hover:bg-[#25294a] text-white text-sm font-medium rounded-lg border border-border-dark transition-colors">
-<span class="material-symbols-outlined text-[20px]">settings</span>
-                        Settings
-                    </button>
-<button class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-medium rounded-lg shadow-glow transition-all">
-<span class="material-symbols-outlined text-[20px]">sync</span>
-                        Sync Device
-                    </button>
-</div>
+
 </div>
 <!-- Dashboard Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+<div class="flex justify-center w-full">
+
 <!-- LEFT COLUMN: Profile & Quick Actions -->
-<div class="lg:col-span-4 space-y-6">
+<div class="w-full max-w-md space-y-6">
+
 <!-- Profile Card -->
 <div class="bg-surface-light/50 backdrop-blur-md border border-border-dark rounded-xl p-6 relative overflow-hidden group">
 <!-- Decorative glow -->
@@ -160,252 +145,12 @@
                             </button>
 </div>
 </div>
-<!-- Quick Settings Links -->
-<div class="bg-surface-light/30 border border-border-dark rounded-xl p-5">
-<h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">Device Config</h4>
-<div class="space-y-2">
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors group" href="#">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded bg-primary/20 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-<span class="material-symbols-outlined text-[18px]">accessibility_new</span>
-</div>
-<span class="text-slate-200 text-sm font-medium">Sensitivity Control</span>
-</div>
-<span class="material-symbols-outlined text-slate-500 text-[18px] group-hover:text-white transition-colors">chevron_right</span>
-</a>
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors group" href="#">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded bg-purple-500/20 text-purple-400 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors">
-<span class="material-symbols-outlined text-[18px]">psychology</span>
-</div>
-<span class="text-slate-200 text-sm font-medium">Neural Mapping</span>
-</div>
-<span class="material-symbols-outlined text-slate-500 text-[18px] group-hover:text-white transition-colors">chevron_right</span>
-</a>
-<a class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors group" href="#">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded bg-cyan-500/20 text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-white transition-colors">
-<span class="material-symbols-outlined text-[18px]">security</span>
-</div>
-<span class="text-slate-200 text-sm font-medium">Data Privacy</span>
-</div>
-<span class="material-symbols-outlined text-slate-500 text-[18px] group-hover:text-white transition-colors">chevron_right</span>
-</a>
-</div>
-</div>
-</div>
-<!-- RIGHT COLUMN: Device Status & Stats -->
-<div class="lg:col-span-8 flex flex-col gap-6">
-<!-- Hero Device Status Card -->
-<div class="relative overflow-hidden rounded-xl border border-border-dark bg-[#0f111f] shadow-glow min-h-[320px]">
-<!-- Background Image -->
-<div class="absolute inset-0 z-0 opacity-40 mix-blend-screen bg-cover bg-right-bottom" data-alt="Abstract schematic of a robotic arm with glowing nodes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXoDUXxoG2znJ-6Cr5YX9-t9Px0cSP_Ea5ui5Pua5d_uzKOkR_3XimFA8c2jIzPqS-7eED6jLPPV4RxgeYYroHv5uzJoc5kprVbiukQSBxGvl0cdmCctjo4GL82bidzPS-sLMBJ3NRPb5702DCx-SzNa5CLsKuqEyYhlQ-tnznhgKu3kjry2TsypaTgNKT1F5ZgI9bTUp07JDIysd_h7c4jzXdvDismEf58y88focainGwut9Gr6snZIbhPy7KmkvWn8rZlF8cUNpV");'></div>
-<!-- Gradient Overlay -->
-<div class="absolute inset-0 bg-gradient-to-r from-[#101122] via-[#101122]/80 to-transparent z-0"></div>
-<div class="relative z-10 p-6 md:p-8 flex flex-col h-full justify-between">
-<div class="flex justify-between items-start">
-<div>
-<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-green-500/20 border border-green-500/30 text-green-400 text-xs font-bold uppercase tracking-wider mb-2">
-<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                        Online
-                                    </div>
-<h3 class="text-2xl font-bold text-white">Arm Model X-1</h3>
-<p class="text-slate-400 text-sm">Firmware v2.4.1 • Serial: NK-99238</p>
-</div>
-<button class="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors">
-<span class="material-symbols-outlined">more_horiz</span>
-</button>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-<!-- Stat 1 -->
-<div class="bg-surface-light/80 backdrop-blur-sm p-4 rounded-lg border border-border-dark">
-<div class="flex items-center gap-2 mb-2 text-slate-400">
-<span class="material-symbols-outlined text-[18px]">battery_charging_full</span>
-<span class="text-xs font-medium uppercase">Battery</span>
-</div>
-<div class="flex items-end gap-2">
-<span class="text-2xl font-bold text-white">84%</span>
-<span class="text-xs text-slate-400 mb-1">~12h left</span>
-</div>
-<div class="w-full bg-slate-700 h-1 mt-2 rounded-full overflow-hidden">
-<div class="bg-green-400 h-full rounded-full" style="width: 84%"></div>
-</div>
-</div>
-<!-- Stat 2 -->
-<div class="bg-surface-light/80 backdrop-blur-sm p-4 rounded-lg border border-border-dark">
-<div class="flex items-center gap-2 mb-2 text-slate-400">
-<span class="material-symbols-outlined text-[18px]">wifi</span>
-<span class="text-xs font-medium uppercase">Latency</span>
-</div>
-<div class="flex items-end gap-2">
-<span class="text-2xl font-bold text-white">12<span class="text-base font-normal text-slate-400">ms</span></span>
-</div>
-<div class="w-full bg-slate-700 h-1 mt-2 rounded-full overflow-hidden">
-<div class="bg-primary h-full rounded-full" style="width: 92%"></div>
-</div>
-</div>
-<!-- Stat 3 -->
-<div class="bg-surface-light/80 backdrop-blur-sm p-4 rounded-lg border border-border-dark">
-<div class="flex items-center gap-2 mb-2 text-slate-400">
-<span class="material-symbols-outlined text-[18px]">neurology</span>
-<span class="text-xs font-medium uppercase">Signal</span>
-</div>
-<div class="flex items-end gap-2">
-<span class="text-2xl font-bold text-white">98%</span>
-<span class="text-xs text-green-400 mb-1">Excellent</span>
-</div>
-<div class="w-full bg-slate-700 h-1 mt-2 rounded-full overflow-hidden">
-<div class="bg-accent-cyan h-full rounded-full" style="width: 98%"></div>
-</div>
-</div>
-<!-- Stat 4 -->
-<div class="bg-surface-light/80 backdrop-blur-sm p-4 rounded-lg border border-border-dark group hover:border-primary/50 transition-colors cursor-pointer">
-<div class="flex items-center justify-between gap-2 mb-2 text-slate-400">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">thermostat</span>
-<span class="text-xs font-medium uppercase">Temp</span>
-</div>
-</div>
-<div class="flex items-end gap-2">
-<span class="text-2xl font-bold text-white">36.5°</span>
-<span class="text-xs text-slate-400 mb-1">Normal</span>
-</div>
-<div class="flex items-center mt-2 text-xs text-slate-400">
-<span>Motor avg: 42°C</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Secondary Stats & Charts Row -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Daily Usage Chart Placeholder -->
-<div class="bg-surface-light/30 border border-border-dark rounded-xl p-5 flex flex-col">
-<div class="flex justify-between items-center mb-4">
-<h4 class="text-white font-semibold flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">monitoring</span>
-                                    Motor Activity
-                                </h4>
-<select class="bg-surface-dark border border-border-dark text-slate-300 text-xs rounded px-2 py-1 outline-none focus:border-primary">
-<option>Today</option>
-<option>This Week</option>
-</select>
-</div>
-<!-- Simple visual bars chart representation -->
-<div class="flex items-end justify-between h-32 gap-2 mt-auto px-2">
-<div class="w-full bg-primary/10 rounded-t-sm h-[40%] hover:bg-primary/30 transition-colors relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">08:00</div>
-</div>
-<div class="w-full bg-primary/10 rounded-t-sm h-[65%] hover:bg-primary/30 transition-colors relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">10:00</div>
-</div>
-<div class="w-full bg-primary/20 rounded-t-sm h-[80%] hover:bg-primary/40 transition-colors relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">12:00</div>
-</div>
-<div class="w-full bg-primary/10 rounded-t-sm h-[50%] hover:bg-primary/30 transition-colors relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">14:00</div>
-</div>
-<div class="w-full bg-primary/10 rounded-t-sm h-[30%] hover:bg-primary/30 transition-colors relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">16:00</div>
-</div>
-<div class="w-full bg-primary/10 rounded-t-sm h-[45%] hover:bg-primary/30 transition-colors relative group">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">18:00</div>
-</div>
-</div>
-<div class="flex justify-between mt-2 text-xs text-slate-500 font-mono">
-<span>8AM</span>
-<span>12PM</span>
-<span>6PM</span>
-</div>
-</div>
-<!-- Muscle Fatigue / Bio Metric -->
-<div class="bg-surface-light/30 border border-border-dark rounded-xl p-5">
-<div class="flex justify-between items-center mb-4">
-<h4 class="text-white font-semibold flex items-center gap-2">
-<span class="material-symbols-outlined text-purple-400">fitness_center</span>
-                                    Muscle Fatigue
-                                </h4>
-<span class="text-xs text-slate-400">Real-time</span>
-</div>
-<div class="flex items-center gap-4 mb-4">
-<div class="relative w-24 h-24 flex items-center justify-center">
-<svg class="w-full h-full" viewbox="0 0 36 36">
-<path class="text-surface-dark" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
-<path class="text-purple-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="35, 100" stroke-linecap="round" stroke-width="3"></path>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-xl font-bold text-white">35%</span>
-</div>
-</div>
-<div class="flex-1 space-y-3">
-<div>
-<div class="flex justify-between text-xs mb-1">
-<span class="text-slate-400">Flexor Carpi</span>
-<span class="text-white">Low</span>
-</div>
-<div class="w-full bg-surface-dark h-1.5 rounded-full overflow-hidden">
-<div class="bg-purple-500 h-full rounded-full" style="width: 25%"></div>
-</div>
-</div>
-<div>
-<div class="flex justify-between text-xs mb-1">
-<span class="text-slate-400">Extensor Digitorum</span>
-<span class="text-white">Moderate</span>
-</div>
-<div class="w-full bg-surface-dark h-1.5 rounded-full overflow-hidden">
-<div class="bg-purple-400 h-full rounded-full" style="width: 45%"></div>
-</div>
-</div>
-</div>
-</div>
-<p class="text-xs text-slate-400 italic">Recommended: 5 min rest cycle within next hour.</p>
-</div>
-</div>
-<!-- Activity Log -->
-<div class="bg-surface-light/30 border border-border-dark rounded-xl overflow-hidden">
-<div class="px-5 py-4 border-b border-border-dark bg-white/5 flex justify-between items-center">
-<h4 class="text-white font-semibold">Recent Activity</h4>
-<a class="text-primary text-sm hover:text-primary-dark font-medium" href="#">View All</a>
-</div>
-<div class="divide-y divide-border-dark">
-<!-- Item 1 -->
-<div class="px-5 py-4 hover:bg-white/5 transition-colors flex gap-4">
-<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
-<span class="material-symbols-outlined text-[20px]">system_update</span>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between mb-1">
-<p class="text-sm font-medium text-white">Firmware Update v2.4.1 Installed</p>
-<span class="text-xs text-slate-500">2h ago</span>
-</div>
-<p class="text-xs text-slate-400">System performance optimization and minor bug fixes for haptic feedback.</p>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="px-5 py-4 hover:bg-white/5 transition-colors flex gap-4">
-<div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 border border-green-500/20">
-<span class="material-symbols-outlined text-[20px]">check_circle</span>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between mb-1">
-<p class="text-sm font-medium text-white">Calibration Successful</p>
-<span class="text-xs text-slate-500">Yesterday, 10:42 AM</span>
-</div>
-<p class="text-xs text-slate-400">Standard 5-point neural calibration completed with 99.8% accuracy.</p>
-</div>
-</div>
-<!-- Item 3 -->
-<div class="px-5 py-4 hover:bg-white/5 transition-colors flex gap-4">
-<div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400 border border-orange-500/20">
-<span class="material-symbols-outlined text-[20px]">warning</span>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between mb-1">
-<p class="text-sm font-medium text-white">Signal Interference Detected</p>
-<span class="text-xs text-slate-500">Oct 23, 4:15 PM</span>
-</div>
-<p class="text-xs text-slate-400">Minor latency spike (45ms) recorded in high-noise environment.</p>
-</div>
+
+
+
+
+
+
 </div>
 </div>
 </div>
