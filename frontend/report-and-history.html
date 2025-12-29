@@ -62,30 +62,91 @@
         }
         .no-scrollbar {
             -ms-overflow-style: none;
+            
+            
             scrollbar-width: none;
         }
+        .sidebar-item.active {
+  background: linear-gradient(
+    90deg,
+    rgba(17,50,212,0.45),
+    rgba(17,50,212,0.2)
+  );
+  box-shadow: 0 0 22px rgba(17,50,212,0.45);
+  color: white;
+}
+
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen">
+
+
+    <aside
+      class="w-64 bg-background-dark border-r border-[#222549] flex flex-col justify-between p-4 hidden lg:flex shrink-0 z-20">
+      <div class="flex flex-col gap-6">
+        <!-- Branding -->
+        <div class="flex flex-col px-2">
+          <h1 class="text-white text-2xl font-bold leading-normal tracking-wide">NeuroVitals<span
+              class="text-primary"></span></h1>
+          <p class="text-text-secondary text-xs font-normal leading-normal tracking-wider">BCI CONTROL CENTER v2.4</p>
+        </div>
+        <!-- Nav Items -->
+        <nav class="flex flex-col gap-2">
+          <a class="sidebar-item flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/20 border border-primary/30 text-white group transition-colors"
+            href="#">
+            <span class="material-symbols-outlined text-primary group-hover:text-white">dashboard</span>
+            <p class="text-sm font-medium leading-normal">Dashboard</p>
+          </a>
+          <a class="sidebar-item flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors"
+            href="#">
+            <span class="material-symbols-outlined">ecg_heart</span>
+            <p class="text-sm font-medium leading-normal">Patient Data</p>
+          </a>
+          <a class="sidebar-item flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors"
+            href="#">
+            <span class="material-symbols-outlined">precision_manufacturing</span>
+            <p class="text-sm font-medium leading-normal">Device Control</p>
+          </a>
+          <a class="sidebar-item flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors"
+            href="#">
+            <span class="material-symbols-outlined">person</span>
+            <p class="text-sm font-medium leading-normal">Profile</p>
+          </a>
+        </nav>
+      </div>
+      <!-- Bottom Actions -->
+      <div class="flex flex-col gap-2">
+        <a class="sidebar-item flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#222549] text-text-secondary hover:text-white transition-colors"
+          href="index.html">
+          <span class="material-symbols-outlined">logout</span>
+          <p class="text-sm font-medium leading-normal">Logout</p>
+        </a>
+        <div class="px-3 py-3 rounded-xl bg-[#101223] mt-2">
+          <div class="flex items-center gap-3">
+
+            <div class="flex flex-col">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
 <!-- Top Navigation -->
-<header class="sticky top-0 z-50 glass-panel border-b border-border-dark w-full">
+<header class="pl-[280px]">
 <div class="px-6 lg:px-10 py-3 flex items-center justify-between">
 <div class="flex items-center gap-4 text-white">
 <div class="size-8 text-primary">
 <span class="material-symbols-outlined text-4xl">neurology</span>
 </div>
 <div>
-<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">NeuroProsthetics Interface</h2>
-<p class="text-xs text-slate-400 font-medium">Clinician Dashboard v2.4</p>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">NeuroLink.ai</h2>
+<p class="text-xs text-slate-400 font-medium">BCI CONTROL CENTER v2.4</p>
 </div>
 </div>
 <div class="hidden lg:flex flex-1 justify-end gap-8 items-center">
-<nav class="flex items-center gap-6">
-<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">Dashboard</a>
-<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">Live Control</a>
-<a class="text-white text-sm font-medium border-b-2 border-primary py-1" href="#">Reports &amp; History</a>
-<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">Settings</a>
-</nav>
+
 <div class="h-6 w-px bg-border-dark"></div>
 <div class="flex gap-3">
 <button class="flex items-center justify-center rounded-lg size-9 hover:bg-white/10 text-white transition-colors relative">
@@ -111,10 +172,10 @@
 </div>
 </header>
 <!-- Main Content -->
-<main class="flex-grow w-full px-4 md:px-8 lg:px-12 py-8 max-w-[1600px] mx-auto">
+<main id="main-content" class="pl-[280px]">
 <!-- Breadcrumbs -->
 <div class="flex flex-wrap gap-2 mb-6 text-sm">
-<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1" href="#">
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-1"href="dashboard.html">
 <span class="material-symbols-outlined text-sm">home</span> Home
             </a>
 <span class="text-slate-600">/</span>
@@ -473,7 +534,7 @@
 </div>
 </main>
 <!-- Footer -->
-<footer class="border-t border-border-dark mt-auto bg-background-dark py-6">
+<footer class="pl-[280px]">
 <div class="px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
 <p>© 2023 NeuroProsthetics Inc. All rights reserved.</p>
 <div class="flex gap-6">
@@ -486,6 +547,19 @@
 <script src="../assets/js/app.js"></script>
 <script>
     checkAuth();
+</script>
+<script>
+(function () {
+  const path = window.location.pathname.toLowerCase();
+
+  document.querySelectorAll(".sidebar-item").forEach(link => {
+    link.classList.remove("active");
+    const href = link.getAttribute("href");
+    if (href && path.includes(href)) {
+      link.classList.add("active");
+    }
+  });
+})();
 </script>
 
 </body></html>
